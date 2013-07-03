@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cronentries>
+<!--  
+<cron>
+    <url>/pipe2wp</url>
+    <description>Sent a test email every 1 minutes</description>
+    <schedule>every 10 minutes</schedule>
+  </cron>
+  
+<cron>
+    <url>/feed2wp</url>
+    <description>Fetch feed every 10 minutes</description>
+    <schedule>every 10 minutes</schedule>
+  </cron>
+-->  
+<cron>
+    <url>/queue</url>
+    <description>Fetch feed and post to my blog every 2 minutes</description>
+    <schedule>every 2 minutes</schedule>
+  </cron>
+
+</cronentries>

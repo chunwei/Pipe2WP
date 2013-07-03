@@ -1,0 +1,34 @@
+@CHARSET "UTF-8";
+body{
+	background:#eee;font-family:Verdana,Tahoma,"宋体",serif;
+}
+.wrapper{
+	width:800px;padding: 10px;margin:10px auto;
+	}
+.container{
+	background:#fff;border: 1px solid #888;width:100%;
+}
+.headerform {
+	width:100%;
+	}
+.headerform h1{
+	font-family:"Times New Roman";
+	font-size:4em;
+	}
+.post2wplink{
+	border:1px solid gray;
+	position:fixed;
+	top:300px;
+	padding:10px;
+	left: 50%;
+	margin-left: 450px;
+	}
+#urlform input{
+	font-size:1.5em;
+	}
+#url {
+	width:80%;
+	}
+	#submit {
+	idth:20%;
+	}
