@@ -1,0 +1,15 @@
+
+java com.imdevice.pipe2wp.UseDemo http://ent.qq.com/a/20100417/000119.htm
+
+java com.imdevice.pipe2wp.UseDemo http://ent.sina.com.cn/y/2010-04-18/08332932833.shtml
+		
+java com.imdevice.pipe2wp.UseDemo http://ent.qq.com/a/20100416/000208.htm
+		
+java com.imdevice.pipe2wp.UseDemo http://ent.sina.com.cn/y/2010-04-18/15432932937.shtml
+		
+java com.imdevice.pipe2wp.UseDemo http://ent.qq.com/a/20100417/000119.htm
+		
+java com.imdevice.pipe2wp.UseDemo http://news.hit.edu.cn/articles/2010/04-12/04093006.htm
+
+
+pause
