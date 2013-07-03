@@ -1,4 +1,2 @@
 *.class
-/war
-/war/tinymce
 /war/WEB-INF/lib
