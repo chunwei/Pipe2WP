@@ -40,6 +40,18 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>ClearReader</servlet-name>
 		<servlet-class>com.imdevice.pipe2wp.ClearReader</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>LowLevelAPI</servlet-name>
+		<servlet-class>com.imdevice.pipe2wp.datastore.LowLevelAPI</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>JPA</servlet-name>
+		<servlet-class>com.imdevice.pipe2wp.datastore.JPA</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>JDO</servlet-name>
+		<servlet-class>com.imdevice.pipe2wp.datastore.JDO</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>Pipe2WP</servlet-name>
 		<url-pattern>/pipe2wp</url-pattern>
@@ -75,6 +87,18 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet-mapping>
 		<servlet-name>ClearReader</servlet-name>
 		<url-pattern>/clearreader</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LowLevelAPI</servlet-name>
+		<url-pattern>/lowlevelapi</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>JPA</servlet-name>
+		<url-pattern>/jpa</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>JDO</servlet-name>
+		<url-pattern>/jdo</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
