@@ -65,7 +65,7 @@ public class TaskFetchServlet extends HttpServlet {
 	}
 	private String delWhoPost(String src){
 		src=delBadImg(src);//<b>感谢<a href="http://www.inwaishe.com" target="_blank">in外设</a>的投递</b><br />
-		return src.replaceAll("<b>感谢.+的投递</b><br />", "");
+		return src.replaceAll("<strong>感谢.+的投递</strong><br/>", "");
 	}
 	private String delBadImg(String src){
 		return src.replaceAll("<img src=\"pic/down.gif\" />","");

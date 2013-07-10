@@ -37,6 +37,18 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-class>com.imdevice.pipe2wp.TaskPostServlet</servlet-class>
 	</servlet>
 	<servlet>
+		<servlet-name>TaskFeedFetcher</servlet-name>
+		<servlet-class>com.imdevice.pipe2wp.task.FeedFetcher</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>TaskPost2WP</servlet-name>
+		<servlet-class>com.imdevice.pipe2wp.task.Post2WP</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>TaskPageWasher</servlet-name>
+		<servlet-class>com.imdevice.pipe2wp.task.PageWasher</servlet-class>
+	</servlet>
+	<servlet>
 		<servlet-name>ClearReader</servlet-name>
 		<servlet-class>com.imdevice.pipe2wp.ClearReader</servlet-class>
 	</servlet>
@@ -75,6 +87,18 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet-mapping>
 		<servlet-name>TaskPost</servlet-name>
 		<url-pattern>/taskpost</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>TaskFeedFetcher</servlet-name>
+		<url-pattern>/tasks/feedfetcher</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>TaskPost2WP</servlet-name>
+		<url-pattern>/tasks/post2wp</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>TaskPageWasher</servlet-name>
+		<url-pattern>/tasks/pagewasher</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>FEED2WP</servlet-name>

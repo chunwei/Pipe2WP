@@ -19,8 +19,8 @@ public class FeedReeder {
 		//url="http://www.leiphone.com/feed";
 		//url="http://www.36kr.com/feed";
 		//url="http://www.ifanr.com/feed";
-		//url="http://www.cnbeta.com/backend.php";
-		url="http://www.theverge.com/rss/index.xml";
+		url="http://www.cnbeta.com/backend.php";
+		//url="http://www.theverge.com/rss/index.xml";
 		try {
             URL feedUrl = new URL(url);
 
@@ -43,6 +43,7 @@ public class FeedReeder {
               System.out.println(i+" : "+entry.getTitle());
               System.out.println(entry.getPublishedDate());
               System.out.println(entry.getLink());
+              //System.out.println(entry.getDescription().getValue());
               @SuppressWarnings("unchecked")
               List<SyndContentImpl>contents=entry.getContents();
               //System.out.println(contents.get(0).getValue());
@@ -53,7 +54,7 @@ public class FeedReeder {
             	  System.out.println(extractor.getContent(contents.get(0).getValue()));
               }else{
             	  System.out.println("Content from Extractor:");
-            	  extractor.url=entry.getLink();
+            	  extractor.setUrl(entry.getLink());
             	  extractor.extract();
             	  System.out.println(extractor.getContent());
               }

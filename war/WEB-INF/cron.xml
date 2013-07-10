@@ -15,8 +15,8 @@
 -->  
 <cron>
     <url>/queue</url>
-    <description>Fetch feed and post to my blog every 2 minutes</description>
-    <schedule>every 2 minutes</schedule>
+    <description>Fetch feed and post to my blog every 6 minutes</description>
+    <schedule>every 6 minutes</schedule>
   </cron>
 
 </cronentries>

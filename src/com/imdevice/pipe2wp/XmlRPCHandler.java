@@ -216,50 +216,53 @@ public class XmlRPCHandler {
 			//writer.write(message);
 			writer.write(msg.toString());
 			writer.close();
+			/*
+			 *** 反馈时间太长，不等了
 			InputStream in=connection.getInputStream();
 			InputSource is = new InputSource(in);
 			try{
 			SAXParserFactory factory = SAXParserFactory.newInstance();
 			SAXParser parser = factory.newSAXParser();
 			DefaultHandler myHandler=new DefaultHandler(){
-				StringBuffer s;
-				@Override
-				public void startDocument() throws SAXException {
-					s=new StringBuffer();
+					StringBuffer s;
+					@Override
+					public void startDocument() throws SAXException {
+						s=new StringBuffer();
+					}
+					@Override
+					public void endElement(String uri, String localName, String qName) throws SAXException { 
+							if(qName.equalsIgnoreCase("string")){
+									System.out.println(s.toString().trim());
+								}
+							s.setLength(0);
+						} 
+					public void characters(char [] buf, int offset, int len) { 
+							s.append(buf,offset,len); 
+						} 
+				};
+				parser.parse(is, myHandler);
+	
+				if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+					System.out.println("OK");// OK
+				} else {
+					System.out.println("error code"+connection.getResponseMessage());// Server returned HTTP error code.
 				}
-				@Override
-				public void endElement(String uri, String localName, String qName) throws SAXException { 
-						if(qName.equalsIgnoreCase("string")){
-								System.out.println(s.toString().trim());
-							}
-						s.setLength(0);
-					} 
-				public void characters(char [] buf, int offset, int len) { 
-						s.append(buf,offset,len); 
-					} 
-			};
-			parser.parse(is, myHandler);
-
-			if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-				System.out.println("OK");// OK
-			} else {
-				System.out.println("error code"+connection.getResponseMessage());// Server returned HTTP error code.
+			} catch (MalformedURLException e) {
+				// ...
+			} catch (UnsupportedEncodingException e1) {
+				// ...
+			} catch (IOException e) {
+				// ...
+			} catch (ParserConfigurationException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SAXException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}finally{
+				in.close();
 			}
-		} catch (MalformedURLException e) {
-			// ...
-		} catch (UnsupportedEncodingException e1) {
-			// ...
-		} catch (IOException e) {
-			// ...
-		} catch (ParserConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SAXException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally{
-			in.close();
-		}
+			*/
 	}
 
 }
