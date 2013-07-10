@@ -22,7 +22,7 @@ public class Post2WP extends HttpServlet {
 		post.setPost_status("pending");
 		post.setTitle(req.getParameter("title"));
 		post.setMt_excerpt(req.getParameter("mt_excerpt"));
-		post.setDescription(req.getParameter("content"));
+		post.setDescription(req.getParameter("description"));
 		try {
 			new XmlRPCHandler().callRpc1(post);
 		} catch (Exception e) {

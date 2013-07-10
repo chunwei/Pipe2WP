@@ -216,8 +216,7 @@ public class XmlRPCHandler {
 			//writer.write(message);
 			writer.write(msg.toString());
 			writer.close();
-			/*
-			 *** 反馈时间太长，不等了
+			
 			InputStream in=connection.getInputStream();
 			InputSource is = new InputSource(in);
 			try{
@@ -262,7 +261,7 @@ public class XmlRPCHandler {
 			}finally{
 				in.close();
 			}
-			*/
+			
 	}
 
 }

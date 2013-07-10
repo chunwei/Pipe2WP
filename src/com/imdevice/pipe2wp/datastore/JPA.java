@@ -36,8 +36,10 @@ public class JPA extends HttpServlet {
 		Employee employee=new Employee("Chunwei", "Lu",hireDate);
 		String link="http://www.ifanr.com/feed";
 		Subscribe sub=new Subscribe(link);
-		sub.setLastFetchDate(new Date());
-		sub.setLastPubDate(new Date());
+		Date init=new Date();
+		init.setTime(init.getTime()-24*60*60*1000);
+		sub.setLastFetchDate(init);
+		sub.setLastPubDate(init);
 		EntityManager em = EMF.get().createEntityManager();
 		try{
 			em.getTransaction().begin();
