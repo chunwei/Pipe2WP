@@ -74,7 +74,7 @@ public class Subscribe {
 		return lastPubDate;
 	}
 	public void setLastFetchDate(Date lastFetchDate) {
-		this.lastPubDate = lastFetchDate;
+		this.lastFetchDate = lastFetchDate;
 	}
 
 }

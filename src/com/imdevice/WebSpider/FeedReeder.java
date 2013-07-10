@@ -18,8 +18,8 @@ public class FeedReeder {
 		String url="";
 		//url="http://www.leiphone.com/feed";
 		//url="http://www.36kr.com/feed";
-		//url="http://www.ifanr.com/feed";
-		url="http://www.cnbeta.com/backend.php";
+		url="http://www.ifanr.com/feed";
+		//url="http://www.cnbeta.com/backend.php";
 		//url="http://www.theverge.com/rss/index.xml";
 		try {
             URL feedUrl = new URL(url);
@@ -33,7 +33,7 @@ public class FeedReeder {
             System.out.println(feed.getFeedType());
             System.out.println(feed.getImage());
             System.out.println("<hr>");
-            
+            if(true)return;
             @SuppressWarnings("unchecked")
 			List<SyndEntry> entries = feed.getEntries();
             if (entries != null && !entries.isEmpty()) {

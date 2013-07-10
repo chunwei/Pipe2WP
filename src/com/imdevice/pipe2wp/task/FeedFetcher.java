@@ -14,12 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.appengine.api.taskqueue.Queue;
 import com.google.appengine.api.taskqueue.QueueFactory;
-import com.google.appengine.api.taskqueue.TaskOptions.Method;
 import com.imdevice.WebSpider.Extractor;
 import com.imdevice.pipe2wp.EMF;
 import com.imdevice.pipe2wp.Subscribe;
 import com.sun.syndication.feed.synd.SyndContent;
-import com.sun.syndication.feed.synd.SyndContentImpl;
 import com.sun.syndication.feed.synd.SyndEntry;
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.SyndFeedInput;
@@ -42,17 +40,16 @@ public class FeedFetcher extends HttpServlet {
 		String param=req.getParameter("link");
 		if(null!=param&&param.length()>5)url=param;
 		*/
+		link="http://www.ifanr.com/feed";
 		EntityManager em = EMF.get().createEntityManager();
 		Subscribe subscribe=em.find(Subscribe.class, link);
 		try {			
-			Queue queue=QueueFactory.getQueue("PostQueue");
-			
+						
             URL feedUrl = new URL(link);
 
             SyndFeedInput input = new SyndFeedInput();
             SyndFeed feed = input.build(new XmlReader(feedUrl));
             
-            String content="";
             if(feed.getPublishedDate().after(subscribe.getLastPubDate())){            	
             	@SuppressWarnings("unchecked")
 				List<SyndEntry> entries = feed.getEntries();
@@ -62,7 +59,8 @@ public class FeedFetcher extends HttpServlet {
             			if(entry.getPublishedDate().after(subscribe.getLastFetchDate())){
 	            			@SuppressWarnings("unchecked")
 							List<SyndContent> contents=entry.getContents();
-	            			if (contents != null && !contents.isEmpty()){            				
+	            			if (contents != null && !contents.isEmpty()){    
+	            				Queue queue=QueueFactory.getQueue("PostQueue");
 	            				queue.add(withUrl("/tasks/post2wp")
 	            						.param("link", entry.getLink())
 	            						.param("title", entry.getTitle())
@@ -70,6 +68,7 @@ public class FeedFetcher extends HttpServlet {
 	            						.param("description", extractor.getContent(contents.get(0).getValue()))
 	            						);            				
 	            			}else{
+	            				Queue queue=QueueFactory.getQueue("WashQueue");
 	            				queue.add(withUrl("/tasks/pagewasher")
 	            						.param("link", entry.getLink())
 	            						.param("title", entry.getTitle())
