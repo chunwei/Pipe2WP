@@ -46,7 +46,9 @@ public class FeedFetcher extends HttpServlet {
 		//link="http://www.ifanr.com/feed";
 		EntityManager em = EMF.get().createEntityManager();
 		Key key=KeyFactory.stringToKey(keyString);
+		em.getTransaction().begin();
 		Subscribe subscribe=em.find(Subscribe.class, key);
+		
 		try {			
 						
             URL feedUrl = new URL(subscribe.getLink());
@@ -85,8 +87,9 @@ public class FeedFetcher extends HttpServlet {
             			subscribe.setLastFetchDate(entries.get(0).getPublishedDate());
             	}
             	subscribe.setLastPubDate(feed.getPublishedDate());
-            	em.getTransaction().begin();
-    			em.persist(subscribe);
+            	//em.getTransaction().begin();//!move to top, update must in one transaction!
+    			//em.clear();
+            	//em.merge(subscribe);
     			em.getTransaction().commit();
             }
             
