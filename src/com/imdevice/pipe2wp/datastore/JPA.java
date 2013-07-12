@@ -3,6 +3,8 @@
  */
 package com.imdevice.pipe2wp.datastore;
 
+import static com.google.appengine.api.taskqueue.TaskOptions.Builder.withUrl;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
@@ -14,6 +16,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.api.taskqueue.Queue;
+import com.google.appengine.api.taskqueue.QueueFactory;
 import com.imdevice.pipe2wp.EMF;
 import com.imdevice.pipe2wp.Subscribe;
 
@@ -60,8 +65,14 @@ public class JPA extends HttpServlet {
 			}else{
 				o.print("No result!");
 			}
-			Subscribe sub1=em.find(Subscribe.class, link);
-			o.print(sub1.getLink()+"  lastPub:  "+sub1.getLastPubDate()+"  lastFetch:  "+sub1.getLastFetchDate());
+			TypedQuery<Subscribe> q1 = em.createQuery("SELECT e FROM Subscribe e",Subscribe.class);
+			List<Subscribe> subscribes=q1.getResultList();
+			if(!subscribes.isEmpty()){
+				for(Subscribe subscribe:subscribes){	
+					o.print("<hr>");
+					o.print(subscribe.getLink()+"  lastPub:  "+subscribe.getLastPubDate()+"  lastFetch:  "+subscribe.getLastFetchDate());
+				}
+			}
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{

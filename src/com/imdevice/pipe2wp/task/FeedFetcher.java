@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.appengine.api.datastore.Key;
+import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.taskqueue.Queue;
 import com.google.appengine.api.taskqueue.QueueFactory;
 import com.imdevice.WebSpider.Extractor;
@@ -26,10 +28,11 @@ import com.sun.syndication.io.XmlReader;
 @SuppressWarnings("serial")
 public class FeedFetcher extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html;charset=UTF-8");
 		PrintWriter o=resp.getWriter();
 		
-		String link=req.getParameter("link");
+		String keyString=req.getParameter("key");
 		/*
 		 * **for debug only
 		//url="http://www.leiphone.com/feed";
@@ -40,12 +43,13 @@ public class FeedFetcher extends HttpServlet {
 		String param=req.getParameter("link");
 		if(null!=param&&param.length()>5)url=param;
 		*/
-		link="http://www.ifanr.com/feed";
+		//link="http://www.ifanr.com/feed";
 		EntityManager em = EMF.get().createEntityManager();
-		Subscribe subscribe=em.find(Subscribe.class, link);
+		Key key=KeyFactory.stringToKey(keyString);
+		Subscribe subscribe=em.find(Subscribe.class, key);
 		try {			
 						
-            URL feedUrl = new URL(link);
+            URL feedUrl = new URL(subscribe.getLink());
 
             SyndFeedInput input = new SyndFeedInput();
             SyndFeed feed = input.build(new XmlReader(feedUrl));
@@ -60,16 +64,16 @@ public class FeedFetcher extends HttpServlet {
 	            			@SuppressWarnings("unchecked")
 							List<SyndContent> contents=entry.getContents();
 	            			if (contents != null && !contents.isEmpty()){    
-	            				Queue queue=QueueFactory.getQueue("PostQueue");
-	            				queue.add(withUrl("/tasks/post2wp")
+	            				Queue queue=QueueFactory.getQueue("WashPageQueue");
+	            				queue.add(withUrl("/tasks/pagewasher")
 	            						.param("link", entry.getLink())
 	            						.param("title", entry.getTitle())
 	            						.param("mt_excerpt", entry.getDescription().getValue())
-	            						.param("description", extractor.getContent(contents.get(0).getValue()))
+	            						.param("dirtypage", contents.get(0).getValue())//可能需要循环contents来获取网站的内容？
 	            						);            				
 	            			}else{
-	            				Queue queue=QueueFactory.getQueue("WashQueue");
-	            				queue.add(withUrl("/tasks/pagewasher")
+	            				Queue queue=QueueFactory.getQueue("FetchPageQueue");
+	            				queue.add(withUrl("/tasks/pagefetcher")
 	            						.param("link", entry.getLink())
 	            						.param("title", entry.getTitle())
 	            						.param("mt_excerpt", entry.getDescription().getValue())            						

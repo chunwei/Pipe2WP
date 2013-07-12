@@ -19,10 +19,10 @@ import com.google.appengine.api.taskqueue.TaskOptions.Method;
 
 @SuppressWarnings("serial")
 public class TaskFetchServlet extends HttpServlet {
-	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-		doPost(req,resp);
-	}
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		doGet(req,resp);
+	}
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html;charset=UTF-8");
 		
@@ -53,10 +53,8 @@ public class TaskFetchServlet extends HttpServlet {
 			reader.close();
 
 		} catch (MalformedURLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

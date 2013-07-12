@@ -9,7 +9,6 @@
             <property name="datanucleus.ConnectionURL" value="appengine"/>
             <property name="datanucleus.singletonEMFForName" value="true"/>
         </properties>
-
     </persistence-unit>
 
 </persistence>

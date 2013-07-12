@@ -1,6 +1,6 @@
 <queue-entries>
   <queue>
-    <name>ReadFeedQueue</name>
+    <name>FetchFeedQueue</name>
     <rate>1/s</rate>
     <retry-parameters>
       <task-retry-limit>3</task-retry-limit>
@@ -8,7 +8,7 @@
     </retry-parameters>
   </queue>
   <queue>
-    <name>ReadPageQueue</name>
+    <name>FetchPageQueue</name>
     <rate>1/s</rate>
     <retry-parameters>
       <task-retry-limit>3</task-retry-limit>
