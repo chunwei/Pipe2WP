@@ -119,7 +119,7 @@ public class Extractor {
         
         	element.select("*").removeAttr("class");       	
         }
-        return element.html();
+        return element.html()==null?"":element.html();
     }
     private int getContentScore(Element p){
     	int cs=0;

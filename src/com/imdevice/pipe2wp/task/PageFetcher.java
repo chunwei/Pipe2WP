@@ -2,12 +2,7 @@ package com.imdevice.pipe2wp.task;
 
 import static com.google.appengine.api.taskqueue.TaskOptions.Builder.withUrl;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.util.logging.Logger;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,15 +24,21 @@ public class PageFetcher extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html;charset=UTF-8");
 		String link=req.getParameter("link");
-		Document doc=Jsoup.connect(req.getParameter(link)).get();
-
-		Queue queue = QueueFactory.getDefaultQueue();
-		queue.add(withUrl("/tasks/pagewasher")
-				.param("link", link)
-				.param("title", req.getParameter("title"))
-				.param("mt_excerpt", req.getParameter("mt_excerpt"))				
-				.param("dirtypage", doc.body().html())	
-				);
+		if(link==null||link.length()<5)return;
+		Document doc=Jsoup.connect(link).get();
+		System.out.println("PageFetch: "+link);
+		try{
+			Queue queue = QueueFactory.getQueue("WashPageQueue");
+			queue.add(withUrl("/tasks/pagewasher")
+					.param("link", link)
+					.param("title", req.getParameter("title"))
+					//.param("mt_excerpt", req.getParameter("mt_excerpt"))				
+					.param("dirtypage", doc.body().html())	
+					.method(Method.POST)//POST是默认值，传递长参数时最好不要用'GET'，因为'GET' url最大长度有限制，而且各浏览器和服务器软件支持不一致
+					);			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 }
 

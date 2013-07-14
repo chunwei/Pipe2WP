@@ -16,9 +16,9 @@ public class FeedReeder {
 	 */
 	public static void main(String[] args) {
 		String url="";
-		//url="http://www.leiphone.com/feed";
+		url="http://www.leiphone.com/feed";
 		//url="http://www.36kr.com/feed";
-		url="http://www.ifanr.com/feed";
+		//url="http://www.ifanr.com/feed";
 		//url="http://www.cnbeta.com/backend.php";
 		//url="http://www.theverge.com/rss/index.xml";
 		try {
