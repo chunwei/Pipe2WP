@@ -25,7 +25,7 @@ public class PageFetcher extends HttpServlet {
 		resp.setContentType("text/html;charset=UTF-8");
 		String link=req.getParameter("link");
 		if(link==null||link.length()<5)return;
-		Document doc=Jsoup.connect(link).get();
+		Document doc=Jsoup.connect(link).timeout(60*1000).get();
 		System.out.println("PageFetch: "+link);
 		try{
 			Queue queue = QueueFactory.getQueue("WashPageQueue");

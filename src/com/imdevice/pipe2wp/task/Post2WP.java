@@ -19,7 +19,7 @@ public class Post2WP extends HttpServlet {
 		resp.setContentType("text/html;charset=UTF-8");
 
 		Post post=new Post();
-		post.setPost_status("pending");
+		//post.setPost_status("pending");
 		post.setTitle(req.getParameter("title"));
 		//post.setMt_excerpt(req.getParameter("mt_excerpt"));
 		post.setDescription(req.getParameter("description"));
