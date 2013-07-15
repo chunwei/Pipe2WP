@@ -12,7 +12,7 @@
     <description>Fetch feed every 10 minutes</description>
     <schedule>every 10 minutes</schedule>
   </cron>
--->  
+--> 
 <cron>
     <url>/queue</url>
     <description>Fetch feed and post to my blog every 6 minutes</description>
@@ -23,5 +23,5 @@
     <description>Start EnjoyCoffee Engine every 10 minutes</description>
     <schedule>every 10 minutes</schedule>
   </cron>
-
+ 
 </cronentries>
