@@ -2,6 +2,7 @@ package com.imdevice.WebSpider;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -15,7 +16,7 @@ public class Extractor {
 
     public static final String ATTR_CONTENT_SCORE = "contentScore";
     public static final String DOM_DEFAULT_CHARSET = "utf-8";
-    public static final String bonus="(?i)(^|\\s)(post|hentry|entry|article)[-]?(content|text|body)(\\s|$)";
+    public static final String bonus="(^|\\s)(post|hentry|entry|article|main)[-_]?(content|single|text|body|box)?(\\s|$)";
     public static final String deduction="(?i)comment|meta|footer|footnote|subcontent|title";
     protected Document doc = null;
     private ArrayList<Element> scoredNodes = new ArrayList<Element>();
@@ -47,13 +48,18 @@ public class Extractor {
     	// 需要删除的标签 (2013/6/26 有些正文居然放在form里面！)
     	element.select("style,iframe,script,button,input,textarea,header,footer,hr,noscript,nav").remove();
     	//删除内容块内的噪音干扰
-    	String noise="(?i)[-_]?(googleAd|dig|jiathis|author|ignore|comment|reply|recommend|related|meta|copyright|header|footer|footnote|sns|share|social|tag|nav|prenext|profile|button|btn|filed)[-_]?";
+    	String noise="(?i)[-_]?(googleAd|dig|jiathis|author|ignore|comment|reply|recommend|related|meta|copyright|header|footer|footnote|sns|share|social|tag|nav|prenext|sidebar|krSide|widget-container|widget|profile|button|btn|filed)[-_]?";
     	String noiseQuery="[class~="+noise+"],[id~="+noise+"]";
     	Elements noiseEs=element.select(noiseQuery);
+    	Pattern bonusReg =Pattern.compile(bonus);
     	for(Element ne:noiseEs){
+    		System.out.println("ne.id:"+ne.id());
+    		System.out.println("ne.className:"+ne.className());
     		if(!ne.tagName().equals("article")){
-    			if(!ne.id().matches(bonus)){
-    				if(!ne.className().matches(bonus)){
+    			if(!bonusReg.matcher(ne.id().toLowerCase()).find()){
+    			//if(!ne.id().toLowerCase().matches(bonus)){
+    				if(!bonusReg.matcher(ne.className().toLowerCase()).find()){
+    				//if(!ne.className().toLowerCase().matches(bonus)){
     					ne.remove();        				
     				}
     			}
@@ -119,7 +125,17 @@ public class Extractor {
         
         	element.select("*").removeAttr("class");       	
         }
-        return element.html();
+        return element.html()==null?"":element.html();
+    }
+    private String ad_hoc(String feed){
+    	switch (feed){
+    	case "http://www.36kr.com/feed":
+    		break;
+    	case "":
+    		break;
+    	}
+    	String result="";
+    	return result;
     }
     private int getContentScore(Element p){
     	int cs=0;
@@ -425,7 +441,7 @@ public class Extractor {
 		//url="http://aio.zol.com.cn/337/3377553.html";
 		//url="http://www.ifanr.com/204906";
 		//url="http://thenextweb.com/google/2012/11/27/google-connects-its-play-store-with-google-public-reviews-will-now-feature-your-name-and-picture/?fromcat=all";
-		//url="http://www.36kr.com/p/174158.html";
+		url="http://www.36kr.com/p/174158.html";
 		// url="http://www.ifanr.com/200362";
 		// url="http://www.cnbeta.com/articles/215155.htm";
 		// url="http://cn.engadget.com/2012/11/22/jolla-wont-support-sailfish-on-nokia-n9/";
@@ -444,7 +460,7 @@ public class Extractor {
 		//url="http://cn.engadget.com/2012/11/29/wsj-sharp-courting-us-firms-for-investments/";
 		//url="http://cn.engadget.com/2012/11/29/amd-considering-texas-campus-sale/";
 		//url="http://www.cnbeta.com/articles/216237.htm";
-		url="http://www.huxiu.com/article/6588/1.html";
+		//url="http://www.huxiu.com/article/6588/1.html";
 		//url="http://www.jpbeta.net/2012/12/ique-3ds-xl-1-2012-1201/";
 		//url="http://www.cnbeta.com/articles/216970.htm";
 		//url="http://digi.tech.qq.com/a/20121207/000491.htm";

@@ -14,12 +14,9 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.taskqueue.Queue;
 import com.google.appengine.api.taskqueue.QueueFactory;
-import com.imdevice.WebSpider.Extractor;
+import com.google.appengine.api.taskqueue.TaskOptions.Method;
 import com.imdevice.pipe2wp.EMF;
-import com.imdevice.pipe2wp.Post;
 import com.imdevice.pipe2wp.Subscribe;
-import com.imdevice.pipe2wp.XmlRPCHandler;
-import com.imdevice.pipe2wp.datastore.Employee;
 
 @SuppressWarnings("serial")
 public class Launcher extends HttpServlet {
@@ -30,15 +27,23 @@ public class Launcher extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html;charset=UTF-8");
 		EntityManager em = EMF.get().createEntityManager();
-		TypedQuery<Subscribe> q = em.createQuery("SELECT e FROM Subscribe e",Subscribe.class);
-		List<Subscribe> subscribes=q.getResultList();
-		if(!subscribes.isEmpty()){
-			Queue queue=QueueFactory.getQueue("FetchFeedQueue");
-			for(Subscribe subscribe:subscribes){	
-				queue.add(withUrl("/tasks/feedfetcher")
-						.param("key", KeyFactory.keyToString(subscribe.getKey()))
-						);				
+		try{
+			TypedQuery<Subscribe> q = em.createQuery("SELECT e FROM Subscribe e",Subscribe.class);
+			List<Subscribe> subscribes=q.getResultList();
+			if(!subscribes.isEmpty()){
+				Queue queue=QueueFactory.getQueue("FetchFeedQueue");
+				for(Subscribe subscribe:subscribes){	
+					System.out.println(subscribe.getLink());
+					String key=KeyFactory.keyToString(subscribe.getKey());
+					queue.add(withUrl("/tasks/feedfetcher")
+							.param("key", key)
+							.param("link", subscribe.getLink())//参数值不能为null
+							.method(Method.POST)//POST是默认值，传递长参数时最好不要用'GET'，因为'GET' url最大长度有限制，而且各浏览器和服务器软件支持不一致
+							);				
+				}
 			}
+		}finally{
+			em.close();
 		}
 	}
 	

@@ -35,9 +35,11 @@ public class JPA extends HttpServlet {
 		
 		Date hireDate=new Date();
 		Employee employee=new Employee("Chunwei", "Lu",hireDate);
-		String link="http://www.ifanr.com/feed";
+		String link="http://www.36kr.com/feed";
 		Subscribe sub=new Subscribe(link);
-		Subscribe sub1=new Subscribe("http://test.com/feed-");
+
+		Subscribe sub1=new Subscribe("test-");
+
 		Date init=new Date();
 		init.setTime(init.getTime()-24*60*60*1000);
 		sub.setLastFetchDate(init);
@@ -50,18 +52,7 @@ public class JPA extends HttpServlet {
 			em.getTransaction().begin();
 			em.persist(sub);
 			em.getTransaction().commit();//如果不commit，下面的查询看不到这条记录
-			em.getTransaction().begin();
-			em.persist(sub1);
-			em.getTransaction().commit();
-			Key k1=sub1.getKey();
-			
-			em.getTransaction().begin();
-			sub1=em.find(Subscribe.class, k1);
-			em.clear();
-			sub1.setLink(sub1.getLink().substring(0, 21)+init.toString());
-			em.merge(sub1);
-			em.getTransaction().commit();
-			
+
 			TypedQuery<Employee> q = em.createQuery("SELECT e FROM Employee e",Employee.class);
 			List<Employee> employees=q.getResultList();
 			if(!employees.isEmpty()){
@@ -82,6 +73,15 @@ public class JPA extends HttpServlet {
 					o.print(subscribe.getLink()+"  lastPub:  "+subscribe.getLastPubDate()+"  lastFetch:  "+subscribe.getLastFetchDate());
 				}
 			}
+			
+			em.getTransaction().begin();
+			em.persist(sub1);
+			em.getTransaction().commit();
+			Subscribe sub2=em.find(Subscribe.class,sub1.getKey());
+			em.getTransaction().begin();
+			sub2.setLink(sub2.getLink().substring(0, 5)+init.toString());
+			em.getTransaction().commit();
+			
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{

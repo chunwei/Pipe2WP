@@ -207,6 +207,8 @@ public class XmlRPCHandler {
 			HttpURLConnection connection = (HttpURLConnection) url
 					.openConnection();
 			connection.setDoOutput(true);
+			connection.setConnectTimeout(40*1000);
+			connection.setReadTimeout(20*1000);
 			connection.setRequestProperty("Content-Type", "text/xml; charset=\"utf-8\""); 
 			connection.setRequestMethod("POST");
 

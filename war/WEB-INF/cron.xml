@@ -18,5 +18,10 @@
     <description>Fetch feed and post to my blog every 6 minutes</description>
     <schedule>every 6 minutes</schedule>
   </cron>
+  <cron>
+    <url>/launcher</url>
+    <description>Start EnjoyCoffee Engine every 10 minutes</description>
+    <schedule>every 10 minutes</schedule>
+  </cron>
 
 </cronentries>
