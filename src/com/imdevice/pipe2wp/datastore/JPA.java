@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.appengine.api.datastore.Key;
 import com.imdevice.pipe2wp.EMF;
 import com.imdevice.pipe2wp.Subscribe;
 
@@ -36,6 +37,7 @@ public class JPA extends HttpServlet {
 		Employee employee=new Employee("Chunwei", "Lu",hireDate);
 		String link="http://www.ifanr.com/feed";
 		Subscribe sub=new Subscribe(link);
+		Subscribe sub1=new Subscribe("http://test.com/feed-");
 		Date init=new Date();
 		init.setTime(init.getTime()-24*60*60*1000);
 		sub.setLastFetchDate(init);
@@ -47,7 +49,19 @@ public class JPA extends HttpServlet {
 			em.getTransaction().commit();//如果不commit，下面的查询看不到这条记录
 			em.getTransaction().begin();
 			em.persist(sub);
+			em.getTransaction().commit();//如果不commit，下面的查询看不到这条记录
+			em.getTransaction().begin();
+			em.persist(sub1);
 			em.getTransaction().commit();
+			Key k1=sub1.getKey();
+			
+			em.getTransaction().begin();
+			sub1=em.find(Subscribe.class, k1);
+			em.clear();
+			sub1.setLink(sub1.getLink().substring(0, 21)+init.toString());
+			em.merge(sub1);
+			em.getTransaction().commit();
+			
 			TypedQuery<Employee> q = em.createQuery("SELECT e FROM Employee e",Employee.class);
 			List<Employee> employees=q.getResultList();
 			if(!employees.isEmpty()){
