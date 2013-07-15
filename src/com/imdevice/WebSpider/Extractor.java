@@ -1,6 +1,8 @@
 package com.imdevice.WebSpider;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
@@ -427,17 +429,17 @@ public class Extractor {
     	return clearContent;
 
     }
+
     public String getContent(String html){
-    	String result="";
     	try {
     		doc=Jsoup.parseBodyFragment(html);
-    		result=clean(getContentBox(getTopBox(doc)));
-			if(debug)result=doc.body().html()+drawChart();
+    		clearContent=clean(getContentBox(getTopBox(doc)));
+			if(debug)clearContent=doc.body().html()+drawChart();
 		} catch (Exception e) {
-			result=e.getMessage();
+			clearContent=e.getMessage();
 			e.printStackTrace();
 		}	
-    	return result;
+    	return clearContent;
     }
     /**
 	 * @param args
@@ -471,6 +473,14 @@ public class Extractor {
 		//url="http://www.cnbeta.com/articles/216970.htm";
 		//url="http://digi.tech.qq.com/a/20121207/000491.htm";
 		//url="http://www.chinaaet.com/article/index.aspx?id=24135";
+		URL u;
+		try {
+			u = new URL(url);
+			String host=u.getHost();
+			System.out.println(host);
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
 		Extractor extrator=new Extractor(url);
 		extrator.debug=false;
 		extrator.extract();

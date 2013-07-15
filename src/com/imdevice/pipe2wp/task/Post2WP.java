@@ -1,6 +1,8 @@
 package com.imdevice.pipe2wp.task;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -17,12 +19,14 @@ public class Post2WP extends HttpServlet {
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html;charset=UTF-8");
-
+		String contentWithSrc=attachSrc(
+				req.getParameter("description"),
+				req.getParameter("link"));
 		Post post=new Post();
 		//post.setPost_status("pending");
 		post.setTitle(req.getParameter("title"));
 		//post.setMt_excerpt(req.getParameter("mt_excerpt"));
-		post.setDescription(req.getParameter("description"));
+		post.setDescription(contentWithSrc);
 		try {
 			new XmlRPCHandler().callRpc1(post);
 		} catch (Exception e) {
@@ -31,6 +35,22 @@ public class Post2WP extends HttpServlet {
 			post=null;//也许能帮助加快内存回收
 		}
 		
+	}
+	private String attachSrc(String content,String srcUrl){
+		String host="Source";
+    	try {
+    		host=new URL(srcUrl).getHost();
+    	} catch (MalformedURLException e) {
+    		e.printStackTrace();
+    	}
+    	StringBuilder sb=new StringBuilder(content);
+		sb.append("<br>本文转自：");
+		sb.append("<a href='");
+		sb.append(srcUrl);
+		sb.append("'>");
+		sb.append(host);
+		sb.append("</a>");
+    	return sb.toString();
 	}
 	
 
