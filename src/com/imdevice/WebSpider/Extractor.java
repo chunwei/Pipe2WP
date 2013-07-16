@@ -58,8 +58,8 @@ public class Extractor {
     	Elements noiseEs=element.select(noiseQuery);
     	Pattern bonusReg =Pattern.compile(bonus);
     	for(Element ne:noiseEs){
-    		System.out.println("ne.id:"+ne.id());
-    		System.out.println("ne.className:"+ne.className());
+    		//System.out.println("ne.id:"+ne.id());
+    		//System.out.println("ne.className:"+ne.className());
     		if(!ne.tagName().equals("article")){
     			if(!bonusReg.matcher(ne.id().toLowerCase()).find()){
     			//if(!ne.id().toLowerCase().matches(bonus)){
