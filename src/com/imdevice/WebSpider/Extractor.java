@@ -18,11 +18,11 @@ public class Extractor {
 
     public static final String ATTR_CONTENT_SCORE = "contentScore";
     public static final String DOM_DEFAULT_CHARSET = "utf-8";
-    public static final String bonus="(^|\\s)(post|hentry|entry|article|main)[-_]?(content|single|text|body|box)?(\\s|$)";
+    public static final String bonus="(^|\\s)(post|hentry|entry|article|single|main)[-_]?(content|single|text|body|box)?(\\s|$)";
     public static final String deduction="(?i)comment|meta|footer|footnote|subcontent|title";
     public static final String noise="(?i)[-_]?(googleAd|dig|jiathis|author|ignore|comment|reply|recommend|related|"
     		+ "meta|copyright|header|footer|footnote|sns|share|social|tag|nav|prenext|sidebar|krSide|widget-container|widget|"
-    		+ "profile|button|btn|filed|weixinzone|clients)[-_]?";
+    		+ "profile|button|btn|filed|weixinzone|clients|geek-observer)[-_]?";
     protected Document doc = null;
     private ArrayList<Element> scoredNodes = new ArrayList<Element>();
     private ArrayList<Element> matchedNodes = new ArrayList<Element>();
