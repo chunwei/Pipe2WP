@@ -195,6 +195,7 @@ public class Extractor {
     	return getTopBox(doc);
     }
     public Element getTopBox(Document doc){
+    	findTitle();
     	Element body=preClean(doc.body());
     	Elements articles=body.getElementsByTag("<article>");
     	if(!articles.isEmpty())body=articles.first();
@@ -203,7 +204,6 @@ public class Extractor {
 		for(Element img:imgs){
 			matchedNodes.add(img.parent());
 		}*/
-    	findTitle();
     	String punctuation="，、。；！？‘’“”,\\.;!\'\"";
     	String regex="["+punctuation+"][^"+punctuation+"]{5,}["+punctuation+"]";
     	Elements allParagraphs=body.getElementsMatchingOwnText(regex);//body.getElementsByTag("p");
@@ -277,9 +277,18 @@ public class Extractor {
     	Elements hs=doc.body().select("h1,h2,h3,h4,h5");
     	boolean found=false;
     	for(Element h:hs){
-    		if(title.indexOf(h.text())>-1){
-    			title=h.text();found=true;
+    		if(title.indexOf(h.text().trim())>-1){
+    			title=h.text().trim();found=true;
     			h.remove();
+    			break;
+    		}else{
+    			for(Element c:h.children()){
+    				if(title.indexOf(c.text().trim())>-1){
+    	    			title=c.text().trim();found=true;
+    	    			break;
+    				}    				
+    			}
+    			if(found){h.remove();break;}
     		}
     	}
     	if(!found&&title.length()>0)title=title.split("[-_|]")[0].trim();    	
@@ -449,7 +458,7 @@ public class Extractor {
 		//url="http://aio.zol.com.cn/337/3377553.html";
 		//url="http://www.ifanr.com/204906";
 		//url="http://thenextweb.com/google/2012/11/27/google-connects-its-play-store-with-google-public-reviews-will-now-feature-your-name-and-picture/?fromcat=all";
-		url="http://www.36kr.com/p/174158.html";
+		//url="http://www.36kr.com/p/174158.html";
 		// url="http://www.ifanr.com/200362";
 		// url="http://www.cnbeta.com/articles/215155.htm";
 		// url="http://cn.engadget.com/2012/11/22/jolla-wont-support-sailfish-on-nokia-n9/";
@@ -473,6 +482,7 @@ public class Extractor {
 		//url="http://www.cnbeta.com/articles/216970.htm";
 		//url="http://digi.tech.qq.com/a/20121207/000491.htm";
 		//url="http://www.chinaaet.com/article/index.aspx?id=24135";
+		url="http://songshuhui.net/archives/82946";
 		URL u;
 		try {
 			u = new URL(url);
