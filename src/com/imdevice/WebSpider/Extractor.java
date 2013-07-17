@@ -1,6 +1,8 @@
 package com.imdevice.WebSpider;
 
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
@@ -16,8 +18,11 @@ public class Extractor {
 
     public static final String ATTR_CONTENT_SCORE = "contentScore";
     public static final String DOM_DEFAULT_CHARSET = "utf-8";
-    public static final String bonus="(^|\\s)(post|hentry|entry|article|main)[-_]?(content|single|text|body|box)?(\\s|$)";
+    public static final String bonus="(^|\\s)(post|hentry|entry|article|single|main)[-_]?(content|single|text|body|box)?(\\s|$)";
     public static final String deduction="(?i)comment|meta|footer|footnote|subcontent|title";
+    public static final String noise="(?i)[-_]?(googleAd|dig|jiathis|author|ignore|comment|reply|recommend|related|"
+    		+ "meta|copyright|header|footer|footnote|sns|share|social|tag|nav|prenext|sidebar|krSide|widget-container|widget|"
+    		+ "profile|button|btn|filed|weixinzone|clients|geek-observer)[-_]?";
     protected Document doc = null;
     private ArrayList<Element> scoredNodes = new ArrayList<Element>();
     private ArrayList<Element> matchedNodes = new ArrayList<Element>();
@@ -48,13 +53,13 @@ public class Extractor {
     	// 需要删除的标签 (2013/6/26 有些正文居然放在form里面！)
     	element.select("style,iframe,script,button,input,textarea,header,footer,hr,noscript,nav").remove();
     	//删除内容块内的噪音干扰
-    	String noise="(?i)[-_]?(googleAd|dig|jiathis|author|ignore|comment|reply|recommend|related|meta|copyright|header|footer|footnote|sns|share|social|tag|nav|prenext|sidebar|krSide|widget-container|widget|profile|button|btn|filed)[-_]?";
+    	//String noise="(?i)[-_]?(googleAd|dig|jiathis|author|ignore|comment|reply|recommend|related|meta|copyright|header|footer|footnote|sns|share|social|tag|nav|prenext|sidebar|krSide|widget-container|widget|profile|button|btn|filed)[-_]?";
     	String noiseQuery="[class~="+noise+"],[id~="+noise+"]";
     	Elements noiseEs=element.select(noiseQuery);
     	Pattern bonusReg =Pattern.compile(bonus);
     	for(Element ne:noiseEs){
-    		System.out.println("ne.id:"+ne.id());
-    		System.out.println("ne.className:"+ne.className());
+    		//System.out.println("ne.id:"+ne.id());
+    		//System.out.println("ne.className:"+ne.className());
     		if(!ne.tagName().equals("article")){
     			if(!bonusReg.matcher(ne.id().toLowerCase()).find()){
     			//if(!ne.id().toLowerCase().matches(bonus)){
@@ -86,8 +91,11 @@ public class Extractor {
     	//remove special char
     	html=html.replaceAll("&.{2,6};|&#.{2,6};", "");
     	//remove continuous <a>
-    	String a2a="((<(?i)(li|p|span)[^>]*>)?\\s*<a[^>]*>.*</a>\\s*(</(?i)(li|p|span)>)?\\s*){2,}";
-    	html=html.replaceAll(a2a, "");
+    	//String a2a="((<(?i)(li|p|span)[^>]*>)?\\s*<a[^>]*>.*</a>\\s*(</(?i)(li|p|span)>)?\\s*){2,}";
+    	//html=html.replaceAll(a2a, "");
+    	String a2a="((<(li|p|span)\\s*[^>]*>)?\\s*(<a\\s*[^>]*>[^<]*</a>)\\s*(</(li|p|span)>)?\\s*){2,}";
+    	Pattern a2aReg=Pattern.compile(a2a, Pattern.CASE_INSENSITIVE);
+    	a2aReg.matcher(html).replaceAll("");
     	element.html(html);
         if(!debug){
 			Elements es=element.getElementsMatchingText("转载请注明|本文链接地址");
@@ -187,6 +195,7 @@ public class Extractor {
     	return getTopBox(doc);
     }
     public Element getTopBox(Document doc){
+    	findTitle();
     	Element body=preClean(doc.body());
     	Elements articles=body.getElementsByTag("<article>");
     	if(!articles.isEmpty())body=articles.first();
@@ -195,7 +204,6 @@ public class Extractor {
 		for(Element img:imgs){
 			matchedNodes.add(img.parent());
 		}*/
-    	findTitle();
     	String punctuation="，、。；！？‘’“”,\\.;!\'\"";
     	String regex="["+punctuation+"][^"+punctuation+"]{5,}["+punctuation+"]";
     	Elements allParagraphs=body.getElementsMatchingOwnText(regex);//body.getElementsByTag("p");
@@ -269,10 +277,13 @@ public class Extractor {
     	Elements hs=doc.body().select("h1,h2,h3,h4,h5");
     	boolean found=false;
     	for(Element h:hs){
-    		if(title.indexOf(h.text())>-1){
-    			title=h.text();found=true;
-    			h.remove();
+    		for(Element c:h.getAllElements()){
+    			if(title.indexOf(c.text().trim())>-1){
+    				title=c.text().trim();found=true;
+    				break;
+    			}    				
     		}
+    		if(found){h.remove();break;}    		
     	}
     	if(!found&&title.length()>0)title=title.split("[-_|]")[0].trim();    	
     }
@@ -421,17 +432,17 @@ public class Extractor {
     	return clearContent;
 
     }
+
     public String getContent(String html){
-    	String result="";
     	try {
     		doc=Jsoup.parseBodyFragment(html);
-    		result=clean(getContentBox(getTopBox(doc)));
-			if(debug)result=doc.body().html()+drawChart();
+    		clearContent=clean(getContentBox(getTopBox(doc)));
+			if(debug)clearContent=doc.body().html()+drawChart();
 		} catch (Exception e) {
-			result=e.getMessage();
+			clearContent=e.getMessage();
 			e.printStackTrace();
 		}	
-    	return result;
+    	return clearContent;
     }
     /**
 	 * @param args
@@ -441,7 +452,7 @@ public class Extractor {
 		//url="http://aio.zol.com.cn/337/3377553.html";
 		//url="http://www.ifanr.com/204906";
 		//url="http://thenextweb.com/google/2012/11/27/google-connects-its-play-store-with-google-public-reviews-will-now-feature-your-name-and-picture/?fromcat=all";
-		url="http://www.36kr.com/p/174158.html";
+		//url="http://www.36kr.com/p/174158.html";
 		// url="http://www.ifanr.com/200362";
 		// url="http://www.cnbeta.com/articles/215155.htm";
 		// url="http://cn.engadget.com/2012/11/22/jolla-wont-support-sailfish-on-nokia-n9/";
@@ -465,6 +476,15 @@ public class Extractor {
 		//url="http://www.cnbeta.com/articles/216970.htm";
 		//url="http://digi.tech.qq.com/a/20121207/000491.htm";
 		//url="http://www.chinaaet.com/article/index.aspx?id=24135";
+		url="http://songshuhui.net/archives/82946";
+		URL u;
+		try {
+			u = new URL(url);
+			String host=u.getHost();
+			System.out.println(host);
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		}
 		Extractor extrator=new Extractor(url);
 		extrator.debug=false;
 		extrator.extract();
