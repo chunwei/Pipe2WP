@@ -277,19 +277,13 @@ public class Extractor {
     	Elements hs=doc.body().select("h1,h2,h3,h4,h5");
     	boolean found=false;
     	for(Element h:hs){
-    		if(title.indexOf(h.text().trim())>-1){
-    			title=h.text().trim();found=true;
-    			h.remove();
-    			break;
-    		}else{
-    			for(Element c:h.children()){
-    				if(title.indexOf(c.text().trim())>-1){
-    	    			title=c.text().trim();found=true;
-    	    			break;
-    				}    				
-    			}
-    			if(found){h.remove();break;}
+    		for(Element c:h.getAllElements()){
+    			if(title.indexOf(c.text().trim())>-1){
+    				title=c.text().trim();found=true;
+    				break;
+    			}    				
     		}
+    		if(found){h.remove();break;}    		
     	}
     	if(!found&&title.length()>0)title=title.split("[-_|]")[0].trim();    	
     }
