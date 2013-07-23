@@ -13,6 +13,7 @@ public class Post {
 		'trash' - post is in trashbin. added with Version 2.9.
 	 */
 	String post_status;
+	String wp_author_id;
 	String title;
 	String mt_excerpt;
 	String description;
@@ -23,6 +24,7 @@ public class Post {
 	public Post(){
 		post_status=null;
 		title="";
+		wp_author_id="";
 		mt_excerpt="";
 		description="";
 		date_created_gmt="";
@@ -38,6 +40,12 @@ public class Post {
 		xml.append("<value><string>"+post_status+"</string></value>");
 		xml.append("</member>");
 		}
+		if(null!=wp_author_id&&wp_author_id.length()>0){
+			xml.append("<member>");
+			xml.append("<name>wp_author_id</name>");
+			xml.append("<value><string>"+wp_author_id+"</string></value>");
+			xml.append("</member>");
+			}
 		xml.append("<member>");
 		xml.append("<name>title</name>");
 		xml.append("<value><string>"+title+"</string></value>");
@@ -89,6 +97,14 @@ public class Post {
 
 	public void setMt_keywords(String mt_keywords) {
 		this.mt_keywords = mt_keywords;
+	}
+
+	public String getWp_author_id() {
+		return wp_author_id;
+	}
+
+	public void setWp_author_id(String wp_author_id) {
+		this.wp_author_id = wp_author_id;
 	}
 
 }

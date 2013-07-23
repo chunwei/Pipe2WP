@@ -35,7 +35,8 @@ public class XMLRPC2WPServlet extends HttpServlet {
 	post.put("dateCreated", pubDate);
 	post.put("mt_excerpt", "摘要excerpt");
 	post.put("description", "This is the content of a trivial post.xmlrpc测试帖<br><img alt=\"富士通云计算参考架构\" src=\"http://i2.sinaimg.cn/IT/it/2011-04-11/U2707P2T1D5390629F13DT20110411121713.JPG\">");
-
+	post.put("wp_author_id", "3");
+	
 	Object[] params = new Object[]{"1", "lcw", "Hncwx123", post, Boolean.TRUE};
 
 	String result;

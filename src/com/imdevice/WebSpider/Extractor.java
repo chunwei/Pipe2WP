@@ -22,7 +22,7 @@ public class Extractor {
     public static final String deduction="(?i)comment|meta|footer|footnote|subcontent|title";
     public static final String noise="(?i)[-_]?(googleAd|dig|jiathis|author|ignore|comment|reply|recommend|related|"
     		+ "meta|copyright|header|footer|footnote|sns|share|social|tag|nav|prenext|sidebar|krSide|widget-container|widget|"
-    		+ "profile|button|btn|filed|weixinzone|clients|geek-observer)[-_]?";
+    		+ "profile|button|btn|filed|weixinzone|clients|geek-observer|copyform)[-_]?";
     protected Document doc = null;
     private ArrayList<Element> scoredNodes = new ArrayList<Element>();
     private ArrayList<Element> matchedNodes = new ArrayList<Element>();

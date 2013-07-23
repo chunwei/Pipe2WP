@@ -1,5 +1,5 @@
 *.class
 /.classpath
-/war/WEB-INF/classes/com
+/war/WEB-INF/classes
 /war/WEB-INF/lib
 /war/WEB-INF/appengine-generated

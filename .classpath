@@ -3,7 +3,7 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/ws-commons-util-1.0.2.jar"/>
-	<classpathentry kind="lib" path="war/WEB-INF/lib/xmlrpc-client-3.1.3.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/xmlrpc-client-3.1.3.jar" sourcepath="D:/Develop/Maven/localRepository/org/apache/xmlrpc/xmlrpc-client/3.1.3/xmlrpc-client-3.1.3-sources.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/xmlrpc-common-3.1.3.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/chardet.jar"/>
 	<classpathentry kind="lib" path="war/WEB-INF/lib/rome-1.0.jar" sourcepath="war/WEB-INF/lib/rome-1.0-sources.jar">
