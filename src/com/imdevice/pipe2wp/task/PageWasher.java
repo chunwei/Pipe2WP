@@ -31,6 +31,7 @@ public class PageWasher extends HttpServlet {
 		try{
 			Queue queue=QueueFactory.getQueue("PostQueue");
 			queue.add(withUrl("/tasks/post2wp")
+					.param("a_id", req.getParameter("a_id"))
 					.param("link", req.getParameter("link"))
 					.param("title", req.getParameter("title"))
 					//.param("mt_excerpt", req.getParameter("mt_excerpt"))

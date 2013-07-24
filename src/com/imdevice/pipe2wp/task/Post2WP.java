@@ -25,6 +25,7 @@ public class Post2WP extends HttpServlet {
 		Post post=new Post();
 		//post.setPost_status("pending");
 		post.setTitle(req.getParameter("title"));
+		post.setWp_author_id(req.getParameter("a_id"));
 		//post.setMt_excerpt(req.getParameter("mt_excerpt"));
 		post.setDescription(contentWithSrc);
 		try {

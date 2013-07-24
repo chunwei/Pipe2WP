@@ -35,23 +35,23 @@ public class JPA extends HttpServlet {
 		
 		Date hireDate=new Date();
 		Employee employee=new Employee("Chunwei", "Lu",hireDate);
-		String link="http://www.36kr.com/feed";
-		Subscribe sub=new Subscribe(link);
+		//String link="http://www.36kr.com/feed";
+		//Subscribe sub=new Subscribe(link);
 
 		Subscribe sub1=new Subscribe("test-");
 
 		Date init=new Date();
 		init.setTime(init.getTime()-24*60*60*1000);
-		sub.setLastFetchDate(init);
-		sub.setLastPubDate(init);
+		//sub.setLastFetchDate(init);
+		//sub.setLastPubDate(init);
 		EntityManager em = EMF.get().createEntityManager();
 		try{
 			em.getTransaction().begin();
 			em.persist(employee);
 			em.getTransaction().commit();//如果不commit，下面的查询看不到这条记录
-			em.getTransaction().begin();
-			em.persist(sub);
-			em.getTransaction().commit();//如果不commit，下面的查询看不到这条记录
+			//em.getTransaction().begin();
+			//em.persist(sub);
+			//em.getTransaction().commit();//如果不commit，下面的查询看不到这条记录
 
 			TypedQuery<Employee> q = em.createQuery("SELECT e FROM Employee e",Employee.class);
 			List<Employee> employees=q.getResultList();

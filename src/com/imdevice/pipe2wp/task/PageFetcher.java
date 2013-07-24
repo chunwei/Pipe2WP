@@ -31,6 +31,7 @@ public class PageFetcher extends HttpServlet {
 			Queue queue = QueueFactory.getQueue("WashPageQueue");
 			queue.add(withUrl("/tasks/pagewasher")
 					.param("link", link)
+					.param("a_id", req.getParameter("a_id"))
 					.param("title", req.getParameter("title"))
 					//.param("mt_excerpt", req.getParameter("mt_excerpt"))				
 					.param("dirtypage", doc.body().html())	
