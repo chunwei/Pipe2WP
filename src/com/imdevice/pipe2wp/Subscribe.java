@@ -19,6 +19,7 @@ public class Subscribe {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Key key;
 	private String link;//the feed url
+	private String uid;//user_id in wordpress
 //	private String title;
 //	private String category;//tech,news,hotpic
 //	private String updatePeriod;//hourly
@@ -26,9 +27,21 @@ public class Subscribe {
 	private Date lastPubDate;
 	private Date lastFetchDate;
 	
-	public Subscribe(){}
+	public Subscribe(){
+		init();
+	}
 	public Subscribe(String link){
+		init();
 		this.link=link;
+	}
+	
+	private void init(){
+		link="";
+		uid="1";
+		Date init=new Date();
+		init.setTime(init.getTime()-24*60*60*1000);
+		lastPubDate=init;
+		lastFetchDate=init;
 	}
 	public Key getKey() {
         return key;
@@ -85,6 +98,12 @@ public class Subscribe {
 	}
 	public void setLastFetchDate(Date lastFetchDate) {
 		this.lastFetchDate = lastFetchDate;
+	}
+	public String getUid() {
+		return uid;
+	}
+	public void setUid(String uid) {
+		this.uid = uid;
 	}
 
 }

@@ -74,6 +74,7 @@ public class FeedFetcher extends HttpServlet {
             				System.out.println(entry.getTitle());
             				Queue queue=QueueFactory.getQueue("FetchPageQueue");
             				queue.add(withUrl("/tasks/pagefetcher")
+            						.param("a_id", subscribe.getUid())
         							.param("link", entry.getLink())
         							.param("title", entry.getTitle())
         							.method(Method.POST)//POST是默认值，传递长参数时最好不要用'GET'，因为'GET' url最大长度有限制，而且各浏览器和服务器软件支持不一致
