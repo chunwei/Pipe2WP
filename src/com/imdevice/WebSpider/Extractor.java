@@ -28,11 +28,13 @@ public class Extractor {
     private ArrayList<Element> matchedNodes = new ArrayList<Element>();
     protected String url="";
     protected String chart="";
-    public String title="";
+    private String title="";
     public String clearContent="";
     public double factor=0.98;
     public boolean debug=false;
-    
+    public void setTitle(String title){
+    	this.title=title;
+    }
     public String getUrl() {
 		return url;
 	}
@@ -432,10 +434,11 @@ public class Extractor {
     	return clearContent;
 
     }
-
+   /*** !!! 注意调用这个方法前，先要设置setTitle()，否则可能出现title清除不掉***/
     public String getContent(String html){
     	try {
     		doc=Jsoup.parseBodyFragment(html);
+    		//title=doc.title();//!!! 注意调用这个方法前，先要设置setTitle()，否则可能出现title清除不掉
     		clearContent=clean(getContentBox(getTopBox(doc)));
 			if(debug)clearContent=doc.body().html()+drawChart();
 		} catch (Exception e) {
@@ -476,7 +479,8 @@ public class Extractor {
 		//url="http://www.cnbeta.com/articles/216970.htm";
 		//url="http://digi.tech.qq.com/a/20121207/000491.htm";
 		//url="http://www.chinaaet.com/article/index.aspx?id=24135";
-		url="http://songshuhui.net/archives/82946";
+		//url="http://songshuhui.net/archives/82946";
+		url="http://www.36kr.com/p/204969.html";
 		URL u;
 		try {
 			u = new URL(url);
