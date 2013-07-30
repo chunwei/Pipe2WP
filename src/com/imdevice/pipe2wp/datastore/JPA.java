@@ -68,9 +68,14 @@ public class JPA extends HttpServlet {
 			TypedQuery<Subscribe> q1 = em.createQuery("SELECT e FROM Subscribe e",Subscribe.class);
 			List<Subscribe> subscribes=q1.getResultList();
 			if(!subscribes.isEmpty()){
-				for(Subscribe subscribe:subscribes){	
+				for(Subscribe subscribe:subscribes){
+					if(subscribe.getUid()==null){
+						em.getTransaction().begin();
+						subscribe.setUid("1");
+						em.getTransaction().commit();
+					}
 					o.print("<hr>");
-					o.print(subscribe.getLink()+"  lastPub:  "+subscribe.getLastPubDate()+"  lastFetch:  "+subscribe.getLastFetchDate());
+					o.print("uid="+subscribe.getUid()+"  link: "+subscribe.getLink()+"  lastPub:  "+subscribe.getLastPubDate()+"  lastFetch:  "+subscribe.getLastFetchDate());
 				}
 			}
 			

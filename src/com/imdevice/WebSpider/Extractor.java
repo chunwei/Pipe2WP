@@ -30,6 +30,7 @@ public class Extractor {
     protected String chart="";
     public String title="";
     public String clearContent="";
+    private Element contentElement=null;
     public double factor=0.98;
     public boolean debug=false;
     
@@ -133,6 +134,7 @@ public class Extractor {
         
         	element.select("*").removeAttr("class");       	
         }
+    	contentElement=element;
         return element.html()==null?"":element.html();
     }
     private String ad_hoc(String feed){
@@ -443,6 +445,9 @@ public class Extractor {
 			e.printStackTrace();
 		}	
     	return clearContent;
+    }
+    public String getContentText(){
+    	return contentElement.text();
     }
     /**
 	 * @param args
