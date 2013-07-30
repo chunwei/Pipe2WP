@@ -423,7 +423,7 @@ public class Extractor {
     public void extract(){
     	if(url.length()<5)return;
     	try {
-			doc=Jsoup.connect(url).get();
+			doc=Jsoup.connect(url).timeout(30000).get();
 			title=doc.title();
 			clearContent=clean(getContentBox(getTopBox(doc)));
 			if(debug)clearContent=doc.body().html()+drawChart();

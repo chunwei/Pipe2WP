@@ -45,7 +45,22 @@ public class Post {
 			xml.append("<name>wp_author_id</name>");
 			xml.append("<value><string>"+wp_author_id+"</string></value>");
 			xml.append("</member>");
-			}
+		}
+		if(null!=mt_keywords&&mt_keywords.length()>0){
+			String[] keywords=mt_keywords.split(",");
+			xml.append("<member>");
+			xml.append("<name>mt_keywords</name>");
+			xml.append("<value>");
+				xml.append("<array>");
+					xml.append("	<data>");
+						for(String keyword:keywords){
+							xml.append("<value><string>"+keyword+"</string></value>");				
+						}
+					xml.append("	</data>");
+				xml.append("</array>");
+			xml.append("</value>");
+			xml.append("</member>");
+		}
 		xml.append("<member>");
 		xml.append("<name>title</name>");
 		xml.append("<value><string>"+title+"</string></value>");

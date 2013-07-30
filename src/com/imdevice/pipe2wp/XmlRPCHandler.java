@@ -367,6 +367,7 @@ public class XmlRPCHandler {
 		post.setMt_excerpt("摘要excerpt");
 		post.setDescription("This is the content of a trivial post.xmlrpc测试帖<br><img alt=\"富士通云计算参考架构\" src=\"http://i2.sinaimg.cn/IT/it/2011-04-11/U2707P2T1D5390629F13DT20110411121713.JPG\">");
 		post.setWp_author_id("3");
+		post.setMt_keywords("Google,Glass,Hello,Wordpress");
 		String url="http://demo.imdevice.com/xmlrpc.php";
 		XmlRPCHandler hander=new XmlRPCHandler();
 		try {
