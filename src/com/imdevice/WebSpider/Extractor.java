@@ -31,7 +31,6 @@ public class Extractor {
     protected String chart="";
     private String title="";
     public String clearContent="";
-    private Element contentElement=null;
     public double factor=0.98;
     public boolean debug=false;
     public void setTitle(String title){
@@ -124,6 +123,8 @@ public class Extractor {
         	}
     	}
     	if(doc.baseUri().contains("cnbeta.com")){
+    		//Element firstImg=imgs.first();
+    		//String src=firstImg.attr("src");
     		if(imgs.first().attr("src").contains("topics"))imgs.first().remove();
     	}
 
@@ -436,10 +437,10 @@ public class Extractor {
     	return clearContent;
 
     }
-   /*** !!! 注意调用这个方法前，先要设置setTitle()，否则可能出现title清除不掉***/
-    public String getContent(String html){
+    /*** !!! 注意调用这个方法前，先要设置setTitle()，否则可能出现title清除不掉***/
+    public String getContent(String html,String baseUri){
     	try {
-    		doc=Jsoup.parseBodyFragment(html);
+    		doc=Jsoup.parseBodyFragment(html,baseUri);
     		//title=doc.title();//!!! 注意调用这个方法前，先要设置setTitle()，否则可能出现title清除不掉
     		clearContent=clean(getContentBox(getTopBox(doc)));
 			if(debug)clearContent=doc.body().html()+drawChart();
@@ -449,8 +450,10 @@ public class Extractor {
 		}	
     	return clearContent;
     }
-    public String getContentText(){
-    	return contentElement.text();
+   /*** !!! 注意调用这个方法前:<br>先要设置setTitle()，否则可能出现title清除不掉;
+    * 		<br>先要设置setUrl(),否则baseUri为""  ***/
+    public String getContent(String html){
+    	return getContent(html,url);
     }
     public String getContentText(){
     	return contentElement.text();
@@ -484,12 +487,12 @@ public class Extractor {
 		//url="http://www.cnbeta.com/articles/216237.htm";
 		//url="http://www.huxiu.com/article/6588/1.html";
 		//url="http://www.jpbeta.net/2012/12/ique-3ds-xl-1-2012-1201/";
-		//url="http://www.cnbeta.com/articles/216970.htm";
+		url="http://www.cnbeta.com/articles/216970.htm";
 		//url="http://digi.tech.qq.com/a/20121207/000491.htm";
 		//url="http://www.chinaaet.com/article/index.aspx?id=24135";
 		//url="http://songshuhui.net/archives/82946";
 		//url="http://www.36kr.com/p/204969.html";
-		url="http://www.huxiu.com/article/17841/1.html";
+		//url="http://www.huxiu.com/article/17841/1.html";
 		URL u;
 		try {
 			u = new URL(url);

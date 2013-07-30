@@ -24,6 +24,7 @@ public class PageWasher extends HttpServlet {
 		String dirtypage=req.getParameter("dirtypage");
 		Extractor extractor=new Extractor();
 		extractor.setTitle(req.getParameter("title"));
+		extractor.setUrl(req.getParameter("link"));
 		String clearPage=extractor.getContent(dirtypage);
 		System.out.println("PageWash: "+req.getParameter("link"));
 		System.out.println("----------------------------------------------------------");
