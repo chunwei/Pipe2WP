@@ -1,0 +1,1319 @@
+﻿#第一列 是自定义词。 第二列是词性。第三列是词频。中间按照【TAB】键隔开。也就是这个“ ”，也就是“\t”
+#词性可以随便写。词频可以随便写。建议写个1000.
+google play	n	1
+iphone	n	1
+三星	n	1
+诺基亚	n	1
+小米手机	n	1
+htc	n	1
+华为	n	1
+联想	n	1
+中兴	n	1
+魅族	n	1
+oppo	n	1
+摩托罗拉	n	1
+酷派	n	1
+步步高	n	1
+索尼爱立信	n	1
+索尼	n	1
+天语	n	1
+黑莓	n	1
+lg	n	1
+金立	n	1
+夏普	n	1
+飞利浦	n	1
+多普达	n	1
+谷歌	n	1
+tcl	n	1
+海信	n	1
+乐讯	n	1
+佳域	n	1
+朵唯	n	1
+长虹	n	1
+康佳	n	1
+大可乐手机	n	1
+夏新	n	1
+纽曼	n	1
+koobee	n	1
+小辣椒手机	n	1
+波导	n	1
+大显	n	1
+海尔	n	1
+尼彩	n	1
+泛泰	n	1
+阿尔卡特	n	1
+奥克斯	n	1
+青橙	n	1
+华硕	n	1
+亿通	n	1
+palm	n	1
+欧新	n	1
+ihkc	n	1
+nec	n	1
+盛大	n	1
+iphone5	n	1
+iphone4s	n	1
+iphone4	n	1
+三星siv	n	1
+小米2s	n	1
+三星n7100	n	1
+三星i9300	n	1
+htcm7	n	1
+魅族mx2	n	1
+三星i9100	n	1
+oppofind5	n	1
+诺基亚920	n	1
+华为荣耀3	n	1
+诺基亚5230	n	1
+小米2a	n	1
+htconex	n	1
+联想k900	n	1
+华为g520	n	1
+诺基亚5233	n	1
+华为c8813	n	1
+三星i9220	n	1
+iphone6	n	1
+小米m2	n	1
+华为c8812	n	1
+诺基亚e63	n	1
+步步高vivoxplay	n	1
+诺基亚520	n	1
+索尼lt26i	n	1
+诺基亚lumia925	n	1
+iphone5s	n	1
+魅族mx3	n	1
+三星s7562	n	1
+诺基亚n8	n	1
+诺基亚720	n	1
+摩托罗拉me525	n	1
+华为p6	n	1
+三星i9000	n	1
+诺基亚820	n	1
+中兴u880	n	1
+三星s5830	n	1
+谷歌nexus4	n	1
+联想k860i	n	1
+华为u9508	n	1
+索尼lt29i	n	1
+htcg11	n	1
+华为c8650	n	1
+酷派7295	n	1
+oppox907	n	1
+诺基亚n9	n	1
+诺基亚5800w	n	1
+苹果macbook pro	n	1
+苹果macbook air	n	1
+联想g480	n	1
+联想y480	n	1
+戴尔14r	n	1
+联想y470	n	1
+联想y400	n	1
+联想g470	n	1
+戴尔15r	n	1
+联想ideapad yoga	n	1
+联想thinkpad e430	n	1
+惠普g4	n	1
+联想ideapady460	n	1
+联想u410	n	1
+华硕a43	n	1
+宏基4750	n	1
+宏基v5	n	1
+苹果imac	n	1
+联想ideapady450	n	1
+联想thinkpad x230	n	1
+苹果macbook	n	1
+联想thinkpad e40	n	1
+联想thinkpad e420	n	1
+宏基e1	n	1
+联想thinkpad t430	n	1
+联想ideapadg450	n	1
+戴尔灵越14	n	1
+华硕k42	n	1
+联想y500	n	1
+联想u310	n	1
+华硕n56	n	1
+宏基v3	n	1
+华硕k43	n	1
+联想ideapadg460	n	1
+宏基s3	n	1
+联想z470	n	1
+宏基4752g	n	1
+联想y580	n	1
+苹果mac mini	n	1
+联想b460	n	1
+联想thinkpad x1	n	1
+联想g475	n	1
+华硕k40	n	1
+华硕x43	n	1
+联想昭阳e49	n	1
+联想扬天v480	n	1
+惠普dv6	n	1
+惠普cq40	n	1
+联想thinkpadt400	n	1
+联想a3000	n	1
+戴尔	n	1
+惠普	n	1
+苹果	n	1
+宏基	n	1
+东芝	n	1
+神舟	n	1
+清华同方	n	1
+方正	n	1
+富士通	n	1
+明基	n	1
+微星	n	1
+技嘉	n	1
+雷蛇	n	1
+七喜	n	1
+长城	n	1
+昂达	n	1
+清华紫光	n	1
+镭波	n	1
+中柏	n	1
+蓝天	n	1
+松下	n	1
+新蓝	n	1
+读书郎	n	1
+万利达	n	1
+现代	n	1
+日立	n	1
+冠捷	n	1
+新月	n	1
+优派	n	1
+卡西欧	n	1
+奢侈品	n	1
+微软	n	1
+京瓷	n	1
+小米	n	1
+读者	n	1
+大可乐	n	1
+首派	n	1
+云狐	n	1
+努比亚	n	1
+泰丰	n	1
+爱国者	n	1
+北斗	n	1
+经纬	n	1
+欧恩	n	1
+中恒	n	1
+hkc 	n	1
+hkc	n	1
+英华达	n	1
+摩西	n	1
+宇达电通mio	n	1
+英华通	n	1
+齐乐	n	1
+锋达通	n	1
+139易	n	1
+i-mate	n	1
+hike	n	1
+国虹	n	1
+博迪	n	1
+thl	n	1
+基伍	n	1
+小宇宙	n	1
+meitu	n	1
+卓普	n	1
+凡尔纳	n	1
+百分之百	n	1
+果冻	n	1
+宏碁	n	1
+华晶科技	n	1
+august	n	1
+3com	n	1
+60beat	n	1
+a.c.ryan	n	1
+acer	n	1
+adonit	n	1
+advent	n	1
+aiaiai	n	1
+ainovo	n	1
+akg	n	1
+alcatel	n	1
+alienware	n	1
+allerta	n	1
+altec lansing	n	1
+amazon	n	1
+andrea	n	1
+andy pad	n	1
+aoc	n	1
+aperion audio	n	1
+apple	n	1
+applydea	n	1
+archos	n	1
+arctic accessories	n	1
+arri	n	1
+art. lebedev	n	1
+astro	n	1
+asus	n	1
+atari	n	1
+audio-technica	n	1
+audyssey	n	1
+augen	n	1
+awind	n	1
+bandai	n	1
+bang & olufsen	n	1
+barnes & noble	n	1
+basis	n	1
+beats	n	1
+bebook	n	1
+beep industries	n	1
+behringer	n	1
+belkin	n	1
+benq	n	1
+berg	n	1
+beyerdynamic	n	1
+blackberry	n	1
+blackmagic	n	1
+blaze	n	1
+blu products	n	1
+blue sky	n	1
+bodymedia	n	1
+bookeen	n	1
+boost	n	1
+bose	n	1
+boston acoustics	n	1
+bowers & wilkins	n	1
+boxee	n	1
+boxer8	n	1
+braven	n	1
+brydge	n	1
+buhel	n	1
+cambridge audio	n	1
+camone tec	n	1
+canon	n	1
+canonical	n	1
+casio	n	1
+caterpillar	n	1
+ceton	n	1
+chinon	n	1
+chumby	n	1
+cirago	n	1
+cisco	n	1
+citizen	n	1
+clamcase	n	1
+clevo	n	1
+coby	n	1
+coleco	n	1
+commodore	n	1
+commodore international	n	1
+compaq	n	1
+compulab	n	1
+connectedevice	n	1
+contour	n	1
+corsair	n	1
+cowon	n	1
+creative	n	1
+cregle	n	1
+ctx	n	1
+danger	n	1
+darwin machine	n	1
+das keyboard	n	1
+datawind	n	1
+definitive technology	n	1
+delkin	n	1
+dell	n	1
+denon	n	1
+digital storm	n	1
+d-link	n	1
+dmd mobile	n	1
+dmm	n	1
+drift	n	1
+drift innovation	n	1
+dropcam	n	1
+dynex	n	1
+ectaco	n	1
+edifier	n	1
+efun	n	1
+electro voice	n	1
+elgato	n	1
+elocity	n	1
+ematic	n	1
+emerson	n	1
+emporia	n	1
+engage	n	1
+epson	n	1
+eton	n	1
+etymotic research	n	1
+eurocom	n	1
+evigroup	n	1
+evolio	n	1
+exopc	n	1
+facebook	n	1
+falcon northwest	n	1
+fanhattan	n	1
+fanny wang	n	1
+fischer audio	n	1
+fitbit	n	1
+fitbug	n	1
+fructel	n	1
+fuhu	n	1
+fuji	n	1
+fujifilm	n	1
+fujitsu	n	1
+fujitsu toshiba	n	1
+fusion garage	n	1
+fxi tech	n	1
+gadmei	n	1
+game park	n	1
+gameklip	n	1
+gamestop	n	1
+gateway	n	1
+ge	n	1
+gear4	n	1
+gechic	n	1
+genius	n	1
+gigabyte	n	1
+git	n	1
+globatrac	n	1
+google	n	1
+gopro	n	1
+grado	n	1
+griffin	n	1
+gscreen	n	1
+g-technology	n	1
+haier	n	1
+harman	n	1
+harman kardon	n	1
+hasselblad	n	1
+helio	n	1
+hippih	n	1
+hp	n	1
+huawei	n	1
+hyperkin	n	1
+hyundai digital	n	1
+icontrolpad	n	1
+ihome	n	1
+iida	n	1
+impecca	n	1
+innocube	n	1
+inq	n	1
+insignia	n	1
+intel	n	1
+inventec	n	1
+iogear	n	1
+iosafe	n	1
+iriver	n	1
+j5 create	n	1
+jabra	n	1
+jawbone	n	1
+jays	n	1
+jbl	n	1
+jhaudio	n	1
+jlab audio	n	1
+joey roth	n	1
+just mobile	n	1
+jvc	n	1
+kensington	n	1
+keyview	n	1
+kingston	n	1
+klipsch	n	1
+kobo	n	1
+kodak	n	1
+koobe	n	1
+koss	n	1
+kouziro	n	1
+krk	n	1
+kt	n	1
+kurio	n	1
+kyobo	n	1
+kyocera	n	1
+lacie	n	1
+lasonic	n	1
+lava	n	1
+le pan	n	1
+leica	n	1
+lenovo	n	1
+libratone	n	1
+linutop	n	1
+livestream	n	1
+logic3	n	1
+logitech	n	1
+lomography	n	1
+lumigon	n	1
+lunatik	n	1
+lynktec	n	1
+lytro	n	1
+mad catz	n	1
+magnavox	n	1
+maingear	n	1
+mamiya	n	1
+marantz	n	1
+marshall	n	1
+matrox	n	1
+matsunichi	n	1
+mattel	n	1
+m-audio	n	1
+medion	n	1
+megafon	n	1
+meizu	n	1
+metz	n	1
+microsoft	n	1
+mimo	n	1
+mitsubishi	n	1
+mobile in style	n	1
+modbook	n	1
+monoprice	n	1
+monsoon	n	1
+monster	n	1
+mophie	n	1
+motion computing	n	1
+motorola	n	1
+mouse computer	n	1
+msi	n	1
+multitouch	n	1
+munitio	n	1
+myfc	n	1
+nec casio	n	1
+nest labs	n	1
+netgear	n	1
+nike	n	1
+nikon	n	1
+nintendo	n	1
+nixeus	n	1
+nocs	n	1
+nokia	n	1
+notion ink	n	1
+novatel	n	1
+novero	n	1
+numark	n	1
+nvidia	n	1
+nyko	n	1
+ocosmos	n	1
+oculus	n	1
+ocz	n	1
+olive	n	1
+olivetti	n	1
+olpc	n	1
+olympus	n	1
+omg life	n	1
+onkyo	n	1
+onlive	n	1
+openpandora	n	1
+optoma	n	1
+orange	n	1
+orange uk	n	1
+orbotix	n	1
+oregon scientific	n	1
+oreobject	n	1
+origin	n	1
+outdoor tech	n	1
+packard bell	n	1
+panasonic	n	1
+pandigital	n	1
+pantech	n	1
+parrot	n	1
+pcd	n	1
+pdp	n	1
+pebble	n	1
+peel	n	1
+pentax	n	1
+performance designed products	n	1
+phiaton	n	1
+philippe starck	n	1
+philips	n	1
+pioneer	n	1
+planar	n	1
+plantronics	n	1
+pocketbook	n	1
+pogoplug	n	1
+polaroid	n	1
+polk audio	n	1
+powera	n	1
+prestigio	n	1
+proview	n	1
+pure	n	1
+pyle	n	1
+qnap	n	1
+qpad	n	1
+qualcomm	n	1
+razer	n	1
+rca	n	1
+red	n	1
+ricoh	n	1
+rim	n	1
+rio	n	1
+roccat	n	1
+roku	n	1
+root	n	1
+russound	n	1
+samsung	n	1
+sandisk	n	1
+sanyo	n	1
+satarii	n	1
+satechi	n	1
+sceptre	n	1
+scosche	n	1
+sculpted eers	n	1
+seagate	n	1
+sega	n	1
+sennheiser	n	1
+sensics	n	1
+sensu	n	1
+shanda	n	1
+sharp	n	1
+sherwood	n	1
+shogun bros.	n	1
+shure	n	1
+shuttle	n	1
+sierra wireless	n	1
+sigma	n	1
+sinclair	n	1
+sirius xm	n	1
+skullcandy	n	1
+skytex	n	1
+sling media	n	1
+smith engineering	n	1
+sms audio	n	1
+snk	n	1
+sonim	n	1
+sonos	n	1
+sony	n	1
+sony ericsson	n	1
+soul by ludacris	n	1
+soundfreaq	n	1
+soundmatters	n	1
+spar	n	1
+spareone	n	1
+speakal	n	1
+spigen sgp	n	1
+spring design	n	1
+sprint	n	1
+square	n	1
+stealth	n	1
+steelseries	n	1
+steven king	n	1
+storage options	n	1
+studio neat	n	1
+supermechanical	n	1
+supertooth	n	1
+swann	n	1
+syabas	n	1
+tag heuer	n	1
+tapwave	n	1
+targus	n	1
+tdk	n	1
+teenage engineering	n	1
+ten one design	n	1
+texas instruments	n	1
+thermaltake	n	1
+thinkgeek	n	1
+thinksound	n	1
+tianyu	n	1
+tiger	n	1
+tiger telematics	n	1
+tivo	n	1
+tivoli audio	n	1
+t-mobile	n	1
+tomtom	n	1
+toshiba	n	1
+touchfire	n	1
+toys "r" us	n	1
+toys r us	n	1
+tranquil pc	n	1
+tritton	n	1
+turtle beach	n	1
+uitstor	n	1
+unnecto	n	1
+urbanears	n	1
+velocity micro	n	1
+verbatim	n	1
+verizon	n	1
+vertu	n	1
+verzo	n	1
+via	n	1
+viewsonic	n	1
+vinci	n	1
+viota	n	1
+vivitar	n	1
+vizio	n	1
+v-moda	n	1
+vodafone	n	1
+vudu	n	1
+wacom	n	1
+western digital	n	1
+westone	n	1
+wikipad	n	1
+wimm labs	n	1
+withings	n	1
+world of wonder	n	1
+world wide licenses	n	1
+x10	n	1
+xerox	n	1
+xi3	n	1
+xiaomi	n	1
+xolo	n	1
+xtreamer	n	1
+yamaha	n	1
+zagg	n	1
+zero1.tv	n	1
+zoom	n	1
+zotac	n	1
+zte	n	1
+360	n	1
+3d打印	n	1
+3g网络	n	1
+4g牌照	n	1
+4k电视	n	1
+787-9	n	1
+a4wp	n	1
+airplay	n	1
+algaebulb	n	1
+alliance for wireless power	n	1
+android	n	1
+android 4.1	n	1
+android 4.1.2	n	1
+android 4.2	n	1
+android 4.3	n	1
+aperturescience	n	1
+app store	n	1
+apple store	n	1
+aps-c	n	1
+asus padfone	n	1
+atm监控系统	n	1
+barnaby jack	n	1
+berrebi	n	1
+bigcommerce	n	1
+billguard	n	1
+blackberry10	n	1
+bmw	n	1
+bootkit ronvix	n	1
+broadwell	n	1
+build 2012	n	1
+cars	n	1
+cdma 2000	n	1
+chargergenie	n	1
+chip in	n	1
+chromecas	n	1
+chromecast	n	1
+creatorverse	n	1
+data	n	1
+debian 7.0	n	1
+disney	n	1
+display	n	1
+ea	n	1
+evernote 5	n	1
+excel	n	1
+exynos	n	1
+find maps for your iphone	n	1
+firefox	n	1
+foobar2000	n	1
+galaxy note	n	1
+galaxy note 2	n	1
+galaxy note ii	n	1
+galaxy note iii	n	1
+galaxy note2	n	1
+galaxy note3	n	1
+galaxy s iii	n	1
+galaxy s3	n	1
+galaxy s4	n	1
+geek week	n	1
+glass	n	1
+gleasy	n	1
+google glass	n	1
+google maps	n	1
+google nexus 4	n	1
+google now	n	1
+google play	n	1
+google 四太子	n	1
+gs4	n	1
+gs4 mini	n	1
+gt-i9507	n	1
+gt赛车	n	1
+gx7	n	1
+haswell	n	1
+helpouts	n	1
+honami	n	1
+htc dna	n	1
+htc droid dna	n	1
+htc one	n	1
+htc one x	n	1
+i’m watch	n	1
+ideacenter horizon	n	1
+ie 11	n	1
+ifixit	n	1
+in car	n	1
+incar	n	1
+infogr	n	1
+instagram	n	1
+ios	n	1
+ios 6.1	n	1
+ios 6.1 beta	n	1
+ios 7	n	1
+ios6.0	n	1
+ios6.0.1	n	1
+ipad	n	1
+ipad 5	n	1
+ipad mini	n	1
+iphone 5	n	1
+iphone应用	n	1
+jelly bean	n	1
+jess lee	n	1
+john browett	n	1
+jony ive	n	1
+joor	n	1
+kickstarter	n	1
+kindle	n	1
+kinect	n	1
+kinect for windows	n	1
+kinect fusion	n	1
+kite mosquito patch	n	1
+lasso	n	1
+lg g2	n	1
+lg nexus	n	1
+lg nexus 4	n	1
+lg optimus 4x hd	n	1
+lg tm2792	n	1
+libreoffice	n	1
+linus torvalds	n	1
+live tiles	n	1
+livescribe	n	1
+loopcam	n	1
+lte	n	1
+lumia	n	1
+lumia 820	n	1
+lumia 920	n	1
+lumia 925	n	1
+lumia920	n	1
+lumia920t	n	1
+m35h	n	1
+macbook pro	n	1
+misfit	n	1
+misfit wearables	n	1
+miui	n	1
+miui v5	n	1
+mozilla	n	1
+mozilla firefox	n	1
+msn	n	1
+mtk	n	1
+nasa	n	1
+netflix	n	1
+nexus	n	1
+nexus 10	n	1
+nexus 4	n	1
+nexus 7	n	1
+nightingale	n	1
+nikon d5200	n	1
+nook color	n	1
+nook平板	n	1
+nowthis news	n	1
+nsa	n	1
+openfab	n	1
+padfone station	n	1
+padphone 2	n	1
+palo_alto	n	1
+panacast	n	1
+parallels	n	1
+pc	n	1
+pentotype	n	1
+performance sport steering wheel	n	1
+performancesportsteeringwheel	n	1
+power matters alliance	n	1
+practical meter	n	1
+precision m3800	n	1
+ps4	n	1
+qi标准	n	1
+qq2013	n	1
+qq2013qq2013	n	1
+rangerx平板	n	1
+redsn0w	n	1
+retina显示屏	n	1
+rhex	n	1
+rithm	n	1
+rt平板	n	1
+rustock	n	1
+samoa	n	1
+samsung galaxy note ii	n	1
+samsung galaxy s iii	n	1
+scott forstall	n	1
+shine	n	1
+siri	n	1
+siri购买电影票	n	1
+sky wifi	n	1
+skype	n	1
+smart cover	n	1
+smartpen	n	1
+snapchat	n	1
+spark	n	1
+ssd	n	1
+steeringwheel	n	1
+super lcd 3	n	1
+surface	n	1
+surface rt	n	1
+surfcast	n	1
+synergy	n	1
+tim cook	n	1
+tumblr	n	1
+t谷歌	n	1
+uber	n	1
+ubuntu	n	1
+ubuntu edge	n	1
+unix style	n	1
+verizon 4g	n	1
+video	n	1
+vivo rt平板	n	1
+voip	n	1
+vu	n	1
+watsi	n	1
+waze	n	1
+wcdma	n	1
+wearablesshinesonny	n	1
+wheezy	n	1
+windows 7	n	1
+windows 8	n	1
+windows 8 rt	n	1
+windows 8.1	n	1
+windows 8标准版	n	1
+windows phone	n	1
+windows phone 8	n	1
+windows phone sdk	n	1
+windows rt	n	1
+windows8	n	1
+windows媒体中心	n	1
+wp8	n	1
+xbox 360	n	1
+xbox live	n	1
+xbox one	n	1
+xperia z	n	1
+youtube	n	1
+zach supalla	n	1
+zachary crockett	n	1
+zlio	n	1
+zynga	n	1
+《wow》	n	1
+《光环》	n	1
+三星s3	n	1
+东芝电视	n	1
+中兴u985	n	1
+中国梦	n	1
+乔布斯	n	1
+乔布斯个人游艇	n	1
+乔纳森	n	1
+乳酸检测	n	1
+云服务	n	1
+互联网	n	1
+亚马逊	n	1
+交互式书评	n	1
+人工智能	n	1
+休闲潮	n	1
+伽利略	n	1
+免费wi-fi	n	1
+兴趣api	n	1
+养猪	n	1
+冰块器皿	n	1
+凤凰fm	n	1
+分辨率2560×1600	n	1
+创业	n	1
+加州大学	n	1
+动视暴雪	n	1
+医疗众筹	n	1
+华为海思	n	1
+华为荣耀四核	n	1
+单反	n	1
+卡巴斯基	n	1
+印象笔记5 mac版	n	1
+反病毒	n	1
+变形本	n	1
+可穿戴健康跟踪	n	1
+同步工具	n	1
+商务范	n	1
+固态硬盘	n	1
+国外支持wcdma	n	1
+国行	n	1
+地图服务here	n	1
+奥巴马	n	1
+好奇号	n	1
+宝马	n	1
+宾得	n	1
+富士康	n	1
+导航系统	n	1
+小米2	n	1
+小米3	n	1
+小米盒子	n	1
+嵌入式windows 8	n	1
+巨屏手机	n	1
+平板电脑	n	1
+库克	n	1
+库彻	n	1
+开发者网站	n	1
+微信	n	1
+微藻发电	n	1
+微软商店	n	1
+德州仪器	n	1
+快递员	n	1
+手机cpu	n	1
+手机心电图	n	1
+手机搜索	n	1
+手机软件	n	1
+找你妹	n	1
+摸屏键盘	n	1
+数字游戏	n	1
+数码相机	n	1
+数码笔	n	1
+斯诺登	n	1
+新neuxs 7	n	1
+新nexus 7	n	1
+施密特	n	1
+无人机	n	1
+无线充电	n	1
+无锁版iphone5	n	1
+星巴克	n	1
+智能手机	n	1
+智能手机cpu	n	1
+智能手表	n	1
+智能机	n	1
+智能桌面	n	1
+智能温度计	n	1
+智能电视机	n	1
+暴雪	n	1
+暴风影音	n	1
+未来照相机	n	1
+机器人	n	1
+机顶盒	n	1
+李彦宏	n	1
+梅耶尔	n	1
+梦想客机	n	1
+棱镜	n	1
+模拟物理游戏	n	1
+波音	n	1
+涨薪	n	1
+深度神经网络	n	1
+游戏	n	1
+游戏创作引擎	n	1
+火星	n	1
+熊猫人之谜	n	1
+物联网	n	1
+用人之道	n	1
+用户界面	n	1
+用户群体特征	n	1
+用户行为分析	n	1
+电信iphone5	n	1
+电信版iphone 5	n	1
+电信版iphone5	n	1
+电子商务	n	1
+电子皮肤	n	1
+电子阅读器	n	1
+电视机顶盒	n	1
+电视棒	n	1
+白帽黑客	n	1
+百度	n	1
+盖茨	n	1
+社交化	n	1
+社交应用	n	1
+社交网络	n	1
+福特	n	1
+福特汽车	n	1
+移动化	n	1
+移动搜索	n	1
+移动支付	n	1
+移动游戏	n	1
+立方体	n	1
+签署漏洞	n	1
+索尼xperia sp	n	1
+索尼电子书	n	1
+红米手机	n	1
+维基百科	n	1
+维基解密	n	1
+网易	n	1
+网盘	n	1
+网络博彩游戏	n	1
+网购	n	1
+网页版instagram	n	1
+网页设计	n	1
+腾讯	n	1
+腾讯风铃	n	1
+英伟达	n	1
+英特尔	n	1
+苹果笔记本	n	1
+苹果高层	n	1
+荣耀3	n	1
+蒂姆•库克	n	1
+蔡司	n	1
+行货iphone5	n	1
+视网膜显示屏	n	1
+语音助手	n	1
+语音识别	n	1
+诺基亚3310	n	1
+谷歌眼镜	n	1
+足球管家	n	1
+车载系统	n	1
+运动传感器	n	1
+重组	n	1
+金山	n	1
+阿桑奇	n	1
+陌陌	n	1
+陨石	n	1
+陨石奖牌	n	1
+雅虎	n	1
+雷军	n	1
+驱蚊贴	n	1
+骁龙800	n	1
+高春辉	n	1
+高通	n	1
+魂斗罗	n	1
+魅族手机	n	1
+鲍尔默	n	1
+麻省理工	n	1
+黄章	n	1
+黑莓9720	n	1
+黑莓a10	n	1
+droid maxx	n	1
+droid ultra	n	1
+droid mini	n	1
+lumia 625	n	1
+optimus f3	n	1
+htc one mini	n	1
+lumia 1020	n	1
+ativ s neo	n	1
+htc 8xt	n	1
+galaxy s4 lte-a	n	1
+e1 rokr	n	1
+xperia z ultra	n	1
+optimus f7	n	1
+butterfly s	n	1
+ascend p6	n	1
+desire 200	n	1
+vodafone smart mini	n	1
+galaxy s4 zoom	n	1
+sprint vital	n	1
+galaxy ace 3	n	1
+galaxy s4 active	n	1
+xperia m	n	1
+fonepad note	n	1
+liquid s1	n	1
+sharp aquos	n	1
+aquos phone	n	1
+eluga p p-03e	n	1
+media x n-06e	n	1
+optimus it l-05e	n	1
+arrows nx f-06e	n	1
+xperia a so-04e	n	1
+galaxy s4 mini	n	1
+s820	n	1
+optimus gj	n	1
+hydro edge	n	1
+hydro xtrm	n	1
+smart iii	n	1
+j one htl22	n	1
+xperia ul sol22	n	1
+#VALUE!
+aquos phone serie shl22	n	1
+urbano l01	n	1
+q5	n	1
+xperia zr	n	1
+lumia 928	n	1
+lumia 521	n	1
+galaxy centura	n	1
+asha 501	n	1
+galaxy core	n	1
+asha 210	n	1
+perception	n	1
+a199	n	1
+53 platinum	n	1
+50 platinum	n	1
+35 carbon	n	1
+vega iron	n	1
+galaxy mega 6.3	n	1
+galaxy mega 5.8	n	1
+galaxy win	n	1
+one (at&t 2013)	n	1
+first	n	1
+lucid 2	n	1
+s920	n	1
+premia 4g	n	1
+xp strike is	n	1
+xp strike	n	1
+xperia l	n	1
+xperia sp	n	1
+galaxy pocket neo	n	1
+galaxy star	n	1
+open	n	1
+durapro	n	1
+padfone infinity	n	1
+force	n	1
+one sv (boost mobile)	n	1
+galaxy victory 4g lte (virgin mobile)	n	1
+grand memo	n	1
+lumia 520	n	1
+lumia 720	n	1
+301 dual sim	n	1
+one touch fire	n	1
+one touch idol x	n	1
+ascend p2	n	1
+event	n	1
+san remo	n	1
+lumo	n	1
+nivo	n	1
+optimus f5	n	1
+liquid z2	n	1
+one (2013)	n	1
+a1000	n	1
+optimus g pro	n	1
+rex 90	n	1
+rex 80	n	1
+rex 70	n	1
+rex 60	n	1
+ti	n	1
+asha 310	n	1
+optimus l7 ii	n	1
+optimus l5 ii	n	1
+optimus l3 ii	n	1
+galaxy discover	n	1
+galaxy young	n	1
+galaxy fame	n	1
+liquid c1	n	1
+spirit 4g	n	1
+q10	n	1
+galaxy express	n	1
+z10	n	1
+vega no. 6	n	1
+torque	n	1
+galaxy xcover 2	n	1
+infobar a02	n	1
+liquid e1	n	1
+desire u	n	1
+ascend g615	n	1
+optimus g pro l-04e	n	1
+medias w n-05e	n	1
+galaxy s ii plus	n	1
+ideaphone k900	n	1
+one touch m'pop	n	1
+one touch s'pop	n	1
+one touch t'pop	n	1
+one touch x'pop	n	1
+grand s	n	1
+w1	n	1
+xperia zl	n	1
+ativ odyssey	n	1
+ascend d2	n	1
+ascend mate	n	1
+one touch idol	n	1
+one touch scribe hd	n	1
+one touch idol ultra	n	1
+5.0-inch full hd smartphone	n	1
+4.7-inch hd smartphone	n	1
+at&t unite	n	1
+blackberry curve 9315	n	1
+vivo 4.65 hd	n	1
+avid 4g	n	1
+galaxy grand	n	1
+find 5	n	1
+htc one sv	n	1
+galaxy admire 4g	n	1
+xperia e	n	1
+lumia 620	n	1
+blackjack	n	1
+zte flash	n	1
+rugby iii	n	1
+droid dna	n	1
+stratosphere ii	n	1
+electrify m	n	1
+galaxy premier	n	1
+spectrum 2	n	1
+lumia 822	n	1
+lumia 510	n	1
+g'zone type-l	n	1
+j butterfly	n	1
+padfone 2	n	1
+optimus g	n	1
+galaxy s iii mini	n	1
+mach	n	1
+optimus	n	1
+galaxy music	n	1
+lumia 810	n	1
+htc one vx	n	1
+htc one x+	n	1
+xperia tl	n	1
+galaxy rugby	n	1
+mifi liberate	n	1
+venice	n	1
+optimus vu ii	n	1
+asha	n	1
+lg optimus	n	1
+windows phone 8x	n	1
+windows phone 8s	n	1
+razr i	n	1
+array	n	1
+galaxy victory 4g lte	n	1
+splendor	n	1
+escape	n	1
+one xc	n	1
+one sc	n	1
+galaxy s relay 4g	n	1
+droid razr maxx hd	n	1
+droid razr m	n	1
+droid razr hd	n	1
+galaxy stellar	n	1
+intuition	n	1
+ascend g600	n	1
+grand x in	n	1
+desire x	n	1
+ativ s	n	1
+xperia j	n	1
+xperia v	n	1
+xperia t	n	1
+optimus l9	n	1
+optimus g (sprint)	n	1
+concord	n	1
+galaxy reverb	n	1
+galaxy s ii 4g	n	1
+galaxy metrix 4g	n	1
+mint	n	1
+liquid gallant	n	1
+liquid gallant duo	n	1
+galaxy s duos	n	1
+optimus vu (international)	n	1
+xperia sl	n	1
+mi2	n	1
+one touch premiere	n	1
+rise	n	1
+vivo 4.3	n	1
+galaxy s lightray 4g	n	1
+marauder	n	1
+motokey ex117	n	1
+electrify 2	n	1
+v70	n	1
+x830	n	1
+advantage x7510	n	1
+canary	n	1
+renue	n	1
+chaser	n	1
+photon	n	1
+regza t-02d	n	1
+mytouch	n	1
+ascend q	n	1
+razr v	n	1
+defy pro	n	1
+atrix hd	n	1
+galaxy chat	n	1
+intensity iii	n	1
+arrows x lte f-05d	n	1
+vega s5	n	1
+blackberry curve	n	1
+optimus it	n	1
+jitterbug plus	n	1
+optimus lte 2	n	1
+razr maxx	n	1
+galaxy siii	n	1
+xperia tipo	n	1
+xperia ion hspa	n	1
+xperia miro	n	1
+duraxt	n	1
+activa 4g	n	1
+desire v	n	1
+motosmart	n	1
+mione	n	1
+windows phone 7	n	1
+wp8.1	n	1
+wp7	n	1
+ios 6	n	1
+ios 5	n	1
+android 5	n	1
+mitwo	n	1
+应用商店	n	1
+移动互联网	n	1
+自媒体	n	1
+x phone	n	1
+moto x	n	1
+magic glass	n	1
+91无线	n	1
