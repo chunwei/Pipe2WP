@@ -26,14 +26,17 @@ public class Extractor {
     protected Document doc = null;
     private ArrayList<Element> scoredNodes = new ArrayList<Element>();
     private ArrayList<Element> matchedNodes = new ArrayList<Element>();
+    private Element contentElement;
     protected String url="";
     protected String chart="";
-    public String title="";
+    private String title="";
     public String clearContent="";
     private Element contentElement=null;
     public double factor=0.98;
     public boolean debug=false;
-    
+    public void setTitle(String title){
+    	this.title=title;
+    }
     public String getUrl() {
 		return url;
 	}
@@ -115,11 +118,15 @@ public class Extractor {
     	for(Element img:imgs){
     		img.attr("src", img.absUrl("src"));
     	}
-    	if(doc.baseUri().startsWith("http://songshuhui.net")){
+    	if(doc.baseUri().contains("songshuhui.net")){
     		for(Element img:imgs){
         		img.attr("src", img.attr("file"));
         	}
     	}
+    	if(doc.baseUri().contains("cnbeta.com")){
+    		if(imgs.first().attr("src").contains("topics"))imgs.first().remove();
+    	}
+
         // remove all blank html tags
     	if(!debug){//上线后使用此条件
 	        Elements children=element.children();
@@ -137,16 +144,7 @@ public class Extractor {
     	contentElement=element;
         return element.html()==null?"":element.html();
     }
-    private String ad_hoc(String feed){
-    	switch (feed){
-    	case "http://www.36kr.com/feed":
-    		break;
-    	case "":
-    		break;
-    	}
-    	String result="";
-    	return result;
-    }
+
     private int getContentScore(Element p){
     	int cs=0;
     	String t=p.ownText();//.text();
@@ -251,13 +249,17 @@ public class Extractor {
     	//如果有match到的段落在topBox之外的，往上追溯2层，如在此2层之内则取该层为topBox=
     	Element contentBox=topBox;
     	Elements a=topBox.getAllElements();
-    	Elements ap=topBox.parent().getAllElements();
-    	Elements app=topBox.parent().parent().getAllElements();
+    	Elements ap=null;
+    	Elements app=null;
+    	if(null!=topBox.parent())
+    	ap=topBox.parent().getAllElements();
+    	if(null!=topBox.parent().parent())
+    	app=topBox.parent().parent().getAllElements();
     	for(Element m:matchedNodes){
     		if(!a.contains(m)){
-    			if(ap.contains(m)){
+    			if(null!=ap&&ap.contains(m)){
     				contentBox=topBox.parent();continue;
-    			}else if(app.contains(m)){
+    			}else if(null!=app&&app.contains(m)){
     				contentBox=topBox.parent().parent();break;
     			}
     		}
@@ -434,10 +436,11 @@ public class Extractor {
     	return clearContent;
 
     }
-
+   /*** !!! 注意调用这个方法前，先要设置setTitle()，否则可能出现title清除不掉***/
     public String getContent(String html){
     	try {
     		doc=Jsoup.parseBodyFragment(html);
+    		//title=doc.title();//!!! 注意调用这个方法前，先要设置setTitle()，否则可能出现title清除不掉
     		clearContent=clean(getContentBox(getTopBox(doc)));
 			if(debug)clearContent=doc.body().html()+drawChart();
 		} catch (Exception e) {
@@ -445,6 +448,9 @@ public class Extractor {
 			e.printStackTrace();
 		}	
     	return clearContent;
+    }
+    public String getContentText(){
+    	return contentElement.text();
     }
     public String getContentText(){
     	return contentElement.text();
@@ -481,7 +487,9 @@ public class Extractor {
 		//url="http://www.cnbeta.com/articles/216970.htm";
 		//url="http://digi.tech.qq.com/a/20121207/000491.htm";
 		//url="http://www.chinaaet.com/article/index.aspx?id=24135";
-		url="http://songshuhui.net/archives/82946";
+		//url="http://songshuhui.net/archives/82946";
+		//url="http://www.36kr.com/p/204969.html";
+		url="http://www.huxiu.com/article/17841/1.html";
 		URL u;
 		try {
 			u = new URL(url);
