@@ -1,0 +1,16 @@
+#第一列 是自定义词。 第二列是词性。第三列是词频。中间按照【TAB】键隔开。也就是这个“ ”，也就是“\t”
+#词性可以随便写。词频可以随便写。建议写个1000.
+google play	n	1
+app store	n	1
+应用商店	n	1
+移动互联网	n	1
+自媒体	n	1
+新nexus 7	n	1
+x phone	n	1
+moto x	n	1
+magic glass	n	1
+nexus 7		n	1
+电视棒	n	1
+91无线	n	1
+lumia 1020		n	1
+android 4.3	n	1

@@ -145,6 +145,7 @@ public class UserDefineLibrary {
      */
     public static void loadLibrary(Forest forest, String path) {
         // 加载用户自定义词典
+        //System.out.println(new File("").getAbsolutePath());  
         File file = null;
         if ((path != null || (path = MyStaticValue.rb.getString("userLibrary")) != null)) {
             file = new File(path);
