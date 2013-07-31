@@ -61,6 +61,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-class>com.imdevice.pipe2wp.ClearReader</servlet-class>
 	</servlet>
 	<servlet>
+		<servlet-name>LoadDic</servlet-name>
+		<servlet-class>com.imdevice.test.LoadDic</servlet-class>
+	</servlet>
+	<servlet>
 		<servlet-name>LowLevelAPI</servlet-name>
 		<servlet-class>com.imdevice.pipe2wp.datastore.LowLevelAPI</servlet-class>
 	</servlet>
@@ -127,6 +131,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet-mapping>
 		<servlet-name>ClearReader</servlet-name>
 		<url-pattern>/clearreader</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>LoadDic</servlet-name>
+		<url-pattern>/loaddic</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>LowLevelAPI</servlet-name>
