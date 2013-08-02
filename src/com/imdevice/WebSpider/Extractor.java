@@ -456,6 +456,7 @@ public class Extractor {
     	return getContent(html,url);
     }
     public String getContentText(){
+    	if(contentElement==null)return "";
     	return contentElement.text();
     }
     /**

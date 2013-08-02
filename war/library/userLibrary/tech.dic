@@ -108,6 +108,8 @@ iphone6	n	1
 诺基亚520	n	1
 索尼lt26i	n	1
 诺基亚lumia925	n	1
+lumia925	n	1
+lumia920	n	1
 iphone5s	n	1
 魅族mx3	n	1
 三星s7562	n	1
@@ -718,7 +720,7 @@ cars	n	1
 cdma 2000	n	1
 chargergenie	n	1
 chip in	n	1
-chromecas	n	1
+chrome	n	1
 chromecast	n	1
 creatorverse	n	1
 data	n	1
@@ -789,6 +791,8 @@ joor	n	1
 kickstarter	n	1
 kindle	n	1
 kinect	n	1
+kinect glass	n	1
+kinect glasses	n	1
 kinect for windows	n	1
 kinect fusion	n	1
 kite mosquito patch	n	1
@@ -851,6 +855,7 @@ qq2013	n	1
 qq2013qq2013	n	1
 rangerx平板	n	1
 redsn0w	n	1
+retina	n	1
 retina显示屏	n	1
 rhex	n	1
 rithm	n	1
@@ -902,10 +907,15 @@ windows phone	n	1
 windows phone 8	n	1
 windows phone sdk	n	1
 windows rt	n	1
+windows7	n	1
 windows8	n	1
+windows8.1	n	1
+windows9	n	1
 windows媒体中心	n	1
 wp8	n	1
+wp9	n	1
 xbox 360	n	1
+xbox 720	n	1
 xbox live	n	1
 xbox one	n	1
 xperia z	n	1
@@ -1043,8 +1053,10 @@ zynga	n	1
 移动游戏	n	1
 立方体	n	1
 签署漏洞	n	1
+安全漏洞	n	1
 索尼xperia sp	n	1
 索尼电子书	n	1
+红米	n	1
 红米手机	n	1
 维基百科	n	1
 维基解密	n	1
@@ -1150,8 +1162,6 @@ vega iron	n	1
 galaxy mega 6.3	n	1
 galaxy mega 5.8	n	1
 galaxy win	n	1
-one (at&t 2013)	n	1
-first	n	1
 lucid 2	n	1
 s920	n	1
 premia 4g	n	1
@@ -1165,8 +1175,8 @@ open	n	1
 durapro	n	1
 padfone infinity	n	1
 force	n	1
-one sv (boost mobile)	n	1
-galaxy victory 4g lte (virgin mobile)	n	1
+one sv	n	1
+galaxy victory 4g lte	n	1
 grand memo	n	1
 lumia 520	n	1
 lumia 720	n	1
@@ -1287,7 +1297,7 @@ xperia j	n	1
 xperia v	n	1
 xperia t	n	1
 optimus l9	n	1
-optimus g (sprint)	n	1
+optimus g	n	1
 concord	n	1
 galaxy reverb	n	1
 galaxy s ii 4g	n	1
@@ -1296,7 +1306,7 @@ mint	n	1
 liquid gallant	n	1
 liquid gallant duo	n	1
 galaxy s duos	n	1
-optimus vu (international)	n	1
+optimus vu	n	1
 xperia sl	n	1
 mi2	n	1
 one touch premiere	n	1
@@ -1388,3 +1398,23 @@ galaxy s4	n	1
 低级黑	n	1
 macbook air	n	1
 bob mansfield	n	1
+key lime pie	n	1
+柠檬派	n	1
+青柠檬派	n	1
+BB10	n	1
+Porsche	n	1
+Porsche Design	n	1
+保时捷	n	1
+媒体聚合器	n	1
+sim	n	1
+sim卡	n	1
+smartwatch	n	1
+ie6	n	1
+ie7	n	1
+ie8	n	1
+ie9	n	1
+ie10	n	1
+ie11	n	1
+ie12	n	1
+safari	n	1
+opera 	n	1
