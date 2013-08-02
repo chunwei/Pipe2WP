@@ -27,6 +27,18 @@ public class KeyWordExtractorDemo {
         if(keywords.length()>2)keywords=keywords.substring(1,keywords.length()-1);
         System.out.println(keywords);
         System.out.println(result);
+        
+        title="iPad 5 后壳曝光，设计趋同 iPad mini";
+        content="这几天 iPhone 5C 的传言此起彼伏，今天网上出现了这款“廉价”版 iPhone 的完整包装盒。"
+        		+"从图片来看，iPhone 5C 的外包装相对简单，类似 iPod Touch 的外包装，不过看起来并不精致，根据苹果以往对设计的关注，上述包装盒的真实性存疑。"
+        		+"有关 iPad mini 的消息主要纠结于是否会上Retina 屏幕，而关于 iPad 5 的消息则少得多。Fanaticfone近日从消息人士处获得了两个 iPad 5 后壳，从图片来看，跟iPad 5 外形设计以往的传闻描述非常相似。"
+        		+"图片显示，iPad 5 就像放大版的 iPad mini，采用窄边框设计，边框距屏幕测量距离为 3 mm，此外，音量按键相互分离，扬声器则置于机身底部。"
+        		+"图片显示的背部Logo 看起来失真，Fastcompany 认为 iPad 5 和 iPad mini 采用相同的 Logo 工艺，而曝光的背壳Logo可能尚未完工。";
+        result = kwc.computeArticleTfidf(title, content);
+        keywords=result.toString();
+        if(keywords.length()>2)keywords=keywords.substring(1,keywords.length()-1);
+        System.out.println(keywords);
+        System.out.println(result);
         /*        String url=//"http://www.ifanr.com/323342";
         		"http://www.36kr.com/p/204969.html";
 		URL u;
