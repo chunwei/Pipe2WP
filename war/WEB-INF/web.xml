@@ -76,6 +76,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>JDO</servlet-name>
 		<servlet-class>com.imdevice.pipe2wp.datastore.JDO</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>DictManager</servlet-name>
+		<servlet-class>com.imdevice.pipe2wp.DictManager</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>UserDicTest</servlet-name>
+		<servlet-class>com.imdevice.test.UserDicTest</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>Pipe2WP</servlet-name>
 		<url-pattern>/pipe2wp</url-pattern>
@@ -147,6 +155,14 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet-mapping>
 		<servlet-name>JDO</servlet-name>
 		<url-pattern>/jdo</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>DictManager</servlet-name>
+		<url-pattern>/dicManager</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>UserDicTest</servlet-name>
+		<url-pattern>/userdictest</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>

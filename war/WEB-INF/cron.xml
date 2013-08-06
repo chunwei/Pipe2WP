@@ -21,8 +21,8 @@
  --> 
   <cron>
     <url>/launcher</url>
-    <description>Start EnjoyCoffee Engine every 10 minutes</description>
-    <schedule>every 10 minutes</schedule>
+    <description>Start EnjoyCoffee Engine every 5 minutes</description>
+    <schedule>every 5 minutes</schedule>
   </cron>
  
 </cronentries>
