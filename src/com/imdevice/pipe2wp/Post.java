@@ -1,5 +1,10 @@
 package com.imdevice.pipe2wp;
 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+
 public class Post {
 	/*  string post_status
 	 	'new' - When there's no previous status
@@ -20,6 +25,7 @@ public class Post {
 	String date_created_gmt;
 	String categories;
 	String mt_keywords;
+	Map<String, String> custom_fields;
 	
 	public Post(){
 		post_status=null;
@@ -30,6 +36,7 @@ public class Post {
 		date_created_gmt="";
 		categories="业界新闻";
 		mt_keywords="";
+		custom_fields=new HashMap<String,String>();
 	}
 	
 	public String toXML(){
@@ -54,16 +61,38 @@ public class Post {
 				xml.append("<array>");
 					xml.append("	<data>");
 						for(String keyword:keywords){
-							xml.append("<value><string>"+keyword+"</string></value>");				
+							xml.append("<value><string><![CDATA["+keyword+"]]></string></value>");				
 						}
 					xml.append("	</data>");
 				xml.append("</array>");
 			xml.append("</value>");
 			xml.append("</member>");
 		}
+		if(!custom_fields.isEmpty()){
+			xml.append("<member><name>custom_fields</name>");
+				xml.append("<value><array><data>");
+					int mapsize = custom_fields.size();
+					Iterator keyValuePairs=custom_fields.entrySet().iterator();
+					for(int i=0; i<mapsize; i++){
+						Map.Entry<String, String> custom_field=(Map.Entry<String, String>) keyValuePairs.next();
+						xml.append("<value>");
+						xml.append("<struct>");
+						xml.append("<member><name>key</name>");
+						xml.append("<value><string>"+custom_field.getKey()+"</string></value>");	
+						xml.append("</member>");
+						xml.append("<member><name>value</name>");
+						xml.append("<value><string><![CDATA["+custom_field.getValue()+"]]></string></value>");	
+						xml.append("</member>");
+						xml.append("</struct>");
+						xml.append("</value>");
+					}
+				xml.append("</data></array></value>");
+			xml.append("</member>");
+					
+		}
 		xml.append("<member>");
 		xml.append("<name>title</name>");
-		xml.append("<value><string>"+title+"</string></value>");
+		xml.append("<value><string><![CDATA["+title+"]]></string></value>");
 		xml.append("</member>");
 		xml.append("<member>");
 		xml.append("<name>mt_excerpt</name>");
@@ -80,6 +109,10 @@ public class Post {
 		xml.append("</member>");
 		}
 		return xml.toString();
+	}
+	
+	public void add_Custom_field(String name,String value){
+		custom_fields.put(name, value);
 	}
 	
 	public String getPost_status() {

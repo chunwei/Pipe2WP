@@ -18,7 +18,7 @@ public class Extractor {
 
     public static final String ATTR_CONTENT_SCORE = "contentScore";
     public static final String DOM_DEFAULT_CHARSET = "utf-8";
-    public static final String bonus="(^|\\s)(post|hentry|entry|article|single|main)[-_]?(content|single|text|body|box)?(\\s|$)";
+    public static final String bonus="(^|\\s)(post|hentry|entry|article|content|single|main)[-_]?(content|single|text|body|box)?(\\s|$)";
     public static final String deduction="(?i)comment|meta|footer|footnote|subcontent|title";
     public static final String noise="(?i)[-_]?(googleAd|dig|jiathis|author|ignore|comment|reply|recommend|related|"
     		+ "meta|copyright|header|footer|footnote|sns|share|social|tag|nav|prenext|sidebar|krSide|widget-container|widget|"
@@ -33,7 +33,15 @@ public class Extractor {
     public String clearContent="";
     public double factor=0.98;
     public boolean debug=false;
-    public void setTitle(String title){
+	private boolean ignoreSporadic=false;
+	private String first_image_url="";
+    public boolean isIgnoreSporadic() {
+		return ignoreSporadic;
+	}
+	public void setIgnoreSporadic(boolean ignoreSporadic) {
+		this.ignoreSporadic = ignoreSporadic;
+	}
+	public void setTitle(String title){
     	this.title=title;
     }
     public String getUrl() {
@@ -58,12 +66,20 @@ public class Extractor {
     	//删除内容块内的噪音干扰
     	//String noise="(?i)[-_]?(googleAd|dig|jiathis|author|ignore|comment|reply|recommend|related|meta|copyright|header|footer|footnote|sns|share|social|tag|nav|prenext|sidebar|krSide|widget-container|widget|profile|button|btn|filed)[-_]?";
     	String noiseQuery="[class~="+noise+"],[id~="+noise+"]";
+    	String bonusQuery="[class~="+bonus+"],[id~="+bonus+"]";
     	Elements noiseEs=element.select(noiseQuery);
-    	Pattern bonusReg =Pattern.compile(bonus);
+    	//Pattern bonusReg =Pattern.compile(bonus);
     	for(Element ne:noiseEs){
+    		if(!ne.tagName().equals("article")){
+	    		Elements bonusEs=ne.select(bonusQuery);
+	    		if(bonusEs.isEmpty()){
+	    			ne.remove();
+	    		}
+    		}
     		//System.out.println("ne.id:"+ne.id());
     		//System.out.println("ne.className:"+ne.className());
-    		if(!ne.tagName().equals("article")){
+    		//此方法可能误杀，正文有可能包含在noiseElement的子节点中
+/*    		if(!ne.tagName().equals("article")){
     			if(!bonusReg.matcher(ne.id().toLowerCase()).find()){
     			//if(!ne.id().toLowerCase().matches(bonus)){
     				if(!bonusReg.matcher(ne.className().toLowerCase()).find()){
@@ -71,7 +87,7 @@ public class Extractor {
     					ne.remove();        				
     				}
     			}
-    		}
+    		}*/
     	}
     	element.select("[href*=javascript:]").remove();
     	// 需要删除的属性
@@ -125,9 +141,14 @@ public class Extractor {
     	if(doc.baseUri().contains("cnbeta.com")){
     		//Element firstImg=imgs.first();
     		//String src=firstImg.attr("src");
-    		if(imgs.first().attr("src").contains("topics"))imgs.first().remove();
+    		if(imgs.first().attr("src").contains("/topics/")){
+    			imgs.first().remove();
+    			imgs.remove(0);
+    			}
     	}
-
+    	if(!imgs.isEmpty()&&null!=imgs.first()){
+    		first_image_url=imgs.first().attr("src");
+    	}
         // remove all blank html tags
     	if(!debug){//上线后使用此条件
 	        Elements children=element.children();
@@ -247,6 +268,7 @@ public class Extractor {
     	return topBox;
     }
     public Element getContentBox(Element topBox){
+    	if(ignoreSporadic)return topBox;
     	//如果有match到的段落在topBox之外的，往上追溯2层，如在此2层之内则取该层为topBox=
     	Element contentBox=topBox;
     	Elements a=topBox.getAllElements();
@@ -508,6 +530,9 @@ public class Extractor {
 		System.out.println(extrator.getTitle());
 		System.out.println(extrator.getContent());
 		//System.out.println(extrator.drawChart());
+	}
+	public String getFirstImage() {
+		return first_image_url;
 	}
 
 }

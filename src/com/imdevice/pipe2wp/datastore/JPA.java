@@ -84,7 +84,9 @@ public class JPA extends HttpServlet {
 			em.getTransaction().commit();
 			Subscribe sub2=em.find(Subscribe.class,sub1.getKey());
 			em.getTransaction().begin();
-			sub2.setLink(sub2.getLink().substring(0, 5)+init.toString());
+			//sub2.setLink(sub2.getLink().substring(0, 5)+init.toString());
+			sub2.setLink("http://www.ifanr.com/feed");
+			sub2.setUid("2");
 			em.getTransaction().commit();
 			
 		}catch(Exception e){

@@ -21,8 +21,14 @@
  --> 
   <cron>
     <url>/launcher</url>
-    <description>Start EnjoyCoffee Engine every 5 minutes</description>
-    <schedule>every 5 minutes</schedule>
+    <description>Start EnjoyCoffee Engine every 15 minutes</description>
+    <schedule>every 15 minutes</schedule>
   </cron>
- 
+<!--   
+  <cron>
+    <url>/dicManager</url>
+    <description>sync tags from web site every 2 hours</description>
+    <schedule>every 2 hours</schedule>
+  </cron>
+  -->
 </cronentries>

@@ -24,16 +24,17 @@ public class PageFetcher extends HttpServlet {
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html;charset=UTF-8");
 		String link=req.getParameter("link");
-		if(link==null||link.length()<5)return;
-		Document doc=Jsoup.connect(link).timeout(60*1000).get();
 		System.out.println("PageFetch: "+link);
+		if(link==null||link.length()<5)return;
+		Document doc=Jsoup.connect(link).timeout(5000).get();
 		try{
 			Queue queue = QueueFactory.getQueue("WashPageQueue");
 			queue.add(withUrl("/tasks/pagewasher")
 					.param("link", link)
 					.param("a_id", req.getParameter("a_id"))
 					.param("title", req.getParameter("title"))
-					//.param("mt_excerpt", req.getParameter("mt_excerpt"))				
+					.param("publish_date", req.getParameter("publish_date"))
+					.param("keywords", req.getParameter("keywords"))				
 					.param("dirtypage", doc.body().html())	
 					.method(Method.POST)//POST是默认值，传递长参数时最好不要用'GET'，因为'GET' url最大长度有限制，而且各浏览器和服务器软件支持不一致
 					);			

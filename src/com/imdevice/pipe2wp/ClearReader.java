@@ -81,10 +81,11 @@ public class ClearReader extends HttpServlet {
 			o.println("<div class='post2wplink' id='submitbtn'><a href='javascript:save()'>POST</a></div>");
 			o.println("</form>");
 			
-			KeyWordComputer kwc = new KeyWordComputer(5);
+/*			太慢太好资源，暂时不用了
+ * 			KeyWordComputer kwc = new KeyWordComputer(5);
 			Collection<Keyword> result = kwc.computeArticleTfidf(title, content);
 			o.println("<div class='keywords-extractor'>");
-			o.println(result);
+			o.println(result);*/
 			o.println("<hr>");
 			o.println(title);
 			o.println("<hr>");

@@ -26,7 +26,14 @@ public class Subscribe {
 //	private String updateFrequency;//1
 	private Date lastPubDate;
 	private Date lastFetchDate;
+	private String lastItemLink;
 	
+	public String getLastItemLink() {
+		return lastItemLink;
+	}
+	public void setLastItemLink(String lastItemLink) {
+		this.lastItemLink = lastItemLink;
+	}
 	public Subscribe(){
 		init();
 	}
@@ -38,8 +45,9 @@ public class Subscribe {
 	private void init(){
 		link="";
 		uid="1";
+		lastItemLink="newlink";
 		Date init=new Date();
-		init.setTime(init.getTime()-24*60*60*1000);
+		init.setTime(init.getTime()-10*24*60*60*1000);
 		lastPubDate=init;
 		lastFetchDate=init;
 	}

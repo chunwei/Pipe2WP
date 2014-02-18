@@ -1,7 +1,12 @@
 package com.imdevice.pipe2wp;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -31,7 +36,9 @@ public class DictManager extends HttpServlet {
 		o.println(actionLink("all","Query All"));
 		o.println(actionLink("load","Dynamic Load"));
 		if(null==action){
-			return;
+			syncTags();
+		}else if("loadUserDict".equals(action)){
+			this.loadUserDict();
 		}else if("create".equals(action)){
 			String name="newdic";
 			String rname=req.getParameter("name");
@@ -54,7 +61,7 @@ public class DictManager extends HttpServlet {
 			o.println(queryAllDic());			
 		}else if("edit".equals(action)){
 			String key=req.getParameter("key");	
-			o.println(Edit(key));
+			o.println(edit(key));
 		}else if("load".equals(action)){
 			o.println(dynamicLoad());			
 		}else{
@@ -98,13 +105,13 @@ public class DictManager extends HttpServlet {
 			em.close();			
 		}
 	}
-	public String Edit(String keyString){
+	public String edit(String keyString){
 		StringBuilder sb=new StringBuilder();
 		EntityManager em = EMF.get().createEntityManager();
 		try{
 			Key key=KeyFactory.stringToKey(keyString);
 			UserDefinedDict dict=em.find(UserDefinedDict.class,key);
-			sb.append("<form action='"+url+"'>");
+			sb.append("<form method='post' action='"+url+"'>");
 			sb.append("<input type='hidden' name='key' value='");
 			sb.append(KeyFactory.keyToString(dict.getKey()));
 			sb.append("'>");
@@ -138,6 +145,7 @@ public class DictManager extends HttpServlet {
 				sb.append("<p>");
 				sb.append(dict.getWords().getValue());
 				sb.append("</p>");
+				getServletContext().setAttribute("userDefinedDict-"+dict.getName(), dict.getWords().getValue());
 			}
 		}else{
 			sb.append("No result!");
@@ -145,10 +153,28 @@ public class DictManager extends HttpServlet {
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
-			em.close();			
+			em.close();	
 		}
 		return sb.toString();
 	}
+	
+	public void loadUserDict() {
+		if(getServletContext().getAttribute("userDefinedDict-techWords")==null){
+			queryAllDic();
+		}
+		Enumeration<?> attrNames=getServletContext().getAttributeNames();
+		while(attrNames.hasMoreElements()){
+			String attrName=(String)attrNames.nextElement();
+			if(attrName.startsWith("userDefinedDict-")){
+				String wordT=(String)getServletContext().getAttribute(attrName);
+				String[] words=wordT.split(";");
+				for(String word:words){
+					UserDefineLibrary.insertWord(word, "n", 10);					
+				}
+			}
+		}
+	}
+	
 	public String dynamicLoad(){
 		StringBuilder sb=new StringBuilder();
 		EntityManager em = EMF.get().createEntityManager();
@@ -166,7 +192,7 @@ public class DictManager extends HttpServlet {
 				sb.append("</p>");
 				String[] words=wordT.split(";");
 				for(String word:words){
-					UserDefineLibrary.insertWord(word, "n", 10);					
+					UserDefineLibrary.insertWord(word, "n", 1);					
 				}
 			}
 		}else{
@@ -178,6 +204,34 @@ public class DictManager extends HttpServlet {
 			em.close();			
 		}
 		return sb.toString();
+	}
+	
+	public String getAllTags(String url){
+		StringBuffer sb = new StringBuffer();
+		try {
+			URL Url = new URL(url);
+
+			BufferedReader reader = new BufferedReader(new InputStreamReader(Url.openStream()));
+			String line;
+			while ((line = reader.readLine()) != null) {
+				sb.append(line);
+			}
+			reader.close();
+		} catch (MalformedURLException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return sb.toString();
+	}
+	public void syncTags(){
+		String allTags=getAllTags("http://www.imdevice.com/alltags/");
+		if(allTags!=null&&allTags.length()>0){
+			String[] words=allTags.split(";");
+			for(String word:words){
+				UserDefineLibrary.insertWord(word, "n", 1);					
+			}
+		}
 	}
 }
 

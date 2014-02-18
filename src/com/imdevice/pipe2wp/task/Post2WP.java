@@ -29,6 +29,9 @@ public class Post2WP extends HttpServlet {
 		post.setWp_author_id(req.getParameter("a_id"));
 		//post.setMt_excerpt(req.getParameter("mt_excerpt"));
 		post.setDescription(contentWithSrc);
+		post.add_Custom_field("original_url", req.getParameter("link"));
+		post.add_Custom_field("original_first_image_url", req.getParameter("first_image_url"));
+		post.add_Custom_field("original_publish_date", req.getParameter("publish_date"));
 		try {
 			new XmlRPCHandler().callRpc1(post);
 		} catch (Exception e) {

@@ -31,9 +31,14 @@ public class Launcher extends HttpServlet {
 			TypedQuery<Subscribe> q = em.createQuery("SELECT e FROM Subscribe e",Subscribe.class);
 			List<Subscribe> subscribes=q.getResultList();
 			if(!subscribes.isEmpty()){
+/*				Queue queueD=QueueFactory.getDefaultQueue();
+				queueD.add(withUrl("/dicManager")
+						.param("action", "loadUserDict")
+						.method(Method.POST)
+						);*/
 				Queue queue=QueueFactory.getQueue("FetchFeedQueue");
 				for(Subscribe subscribe:subscribes){	
-					System.out.println(subscribe.getLink());
+					System.out.println("Lanucher:"+subscribe.getLink());
 					String key=KeyFactory.keyToString(subscribe.getKey());
 					queue.add(withUrl("/tasks/feedfetcher")
 							.param("key", key)
