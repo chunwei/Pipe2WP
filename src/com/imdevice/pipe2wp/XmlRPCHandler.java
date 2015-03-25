@@ -30,14 +30,16 @@ public class XmlRPCHandler {
 	String password;
 	String methodname;
 	
+	
 	public XmlRPCHandler(){
+		XmlRPCProperties prop=XmlRPCProperties.getInstance();
 		//xmlrpcurl="http://imdevice.com/wordpress/xmlrpc.php";
-		xmlrpcurl="http://imdevice.com/xmlrpc.php";
 		//xmlrpcurl="http://42.121.1.72/xmlrpc.php";
-		blogid="1";
-		username="lcw";
-		password="Hncwx123";
-		methodname="metaWeblog.newPost";
+		xmlrpcurl=prop.getXmlrpcurl();
+		blogid=prop.getBlogid();
+		username=prop.getUsername();
+		password=prop.getPassword();
+		methodname=prop.getMethodname();
 	}
 	public static void main(String[] args) {
 		

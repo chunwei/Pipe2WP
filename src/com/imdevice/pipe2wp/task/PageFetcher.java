@@ -27,12 +27,14 @@ public class PageFetcher extends HttpServlet {
 		System.out.println("PageFetch: "+link);
 		if(link==null||link.length()<5)return;
 		Document doc=Jsoup.connect(link).timeout(5000).get();
+		String title=req.getParameter("title").trim();
+		title=(title!=null&&title.length()>0)?title:doc.title();
 		try{
 			Queue queue = QueueFactory.getQueue("WashPageQueue");
 			queue.add(withUrl("/tasks/pagewasher")
 					.param("link", link)
 					.param("a_id", req.getParameter("a_id"))
-					.param("title", req.getParameter("title"))
+					.param("title", title)
 					.param("publish_date", req.getParameter("publish_date"))
 					.param("keywords", req.getParameter("keywords"))				
 					.param("dirtypage", doc.body().html())	

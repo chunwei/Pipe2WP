@@ -146,6 +146,22 @@ public class Extractor {
     			imgs.remove(0);
     			}
     	}
+    	if(doc.baseUri().contains("dgtle.com")){
+    		//Element firstImg=imgs.first();
+    		//String src=firstImg.attr("src");
+    		if(imgs.first().attr("src").contains("小编头像")){
+    			imgs.first().remove();
+    			imgs.remove(0);
+    			}
+    	}
+    	if(doc.baseUri().contains("pingwest.com")){
+    		//Element firstImg=imgs.first();
+    		//String src=firstImg.attr("src");
+    		if(imgs.first().attr("src").contains("daily-invest")){
+    			imgs.first().remove();
+    			imgs.remove(0);
+    			}
+    	}
     	if(!imgs.isEmpty()&&null!=imgs.first()){
     		first_image_url=imgs.first().attr("src");
     	}
@@ -510,7 +526,8 @@ public class Extractor {
 		//url="http://www.cnbeta.com/articles/216237.htm";
 		//url="http://www.huxiu.com/article/6588/1.html";
 		//url="http://www.jpbeta.net/2012/12/ique-3ds-xl-1-2012-1201/";
-		url="http://www.cnbeta.com/articles/216970.htm";
+		//url="http://www.cnbeta.com/articles/216970.htm";
+		url="http://www.pintu360.com/25396.html";
 		//url="http://digi.tech.qq.com/a/20121207/000491.htm";
 		//url="http://www.chinaaet.com/article/index.aspx?id=24135";
 		//url="http://songshuhui.net/archives/82946";

@@ -9,7 +9,9 @@ public class TestRegex {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-
+		String title="木门电商刚刚萌芽 线上、线下融合是关键 | 品途网";
+		title=title.split("[-_|]")[0].trim();  
+		System.out.println( title);
         Pattern p1 = Pattern.compile("f(.+?)i(.+?)h"); 
         Matcher m1 = p1.matcher("finishabigfishfrish"); 
         while (m1.find()) { 

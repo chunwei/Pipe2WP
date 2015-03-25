@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.appengine.api.datastore.Key;
 import com.imdevice.pipe2wp.EMF;
 import com.imdevice.pipe2wp.Subscribe;
+import com.imdevice.pipe2wp.XmlRPCProperties;
 
 /**
  * @author lcw601474
@@ -31,10 +32,13 @@ public class JPA extends HttpServlet {
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		resp.setContentType("text/html;charset=UTF-8");
 		PrintWriter o=resp.getWriter();
+		o.print("add Employee | XmlRPCProperties ?");
 		
-		
+		String add=req.getParameter("add");
+		o.print("add "+add);
 		Date hireDate=new Date();
 		Employee employee=new Employee("Chunwei", "Lu",hireDate);
+		XmlRPCProperties properties=new XmlRPCProperties();
 		//String link="http://www.36kr.com/feed";
 		//Subscribe sub=new Subscribe(link);
 
@@ -46,9 +50,15 @@ public class JPA extends HttpServlet {
 		//sub.setLastPubDate(init);
 		EntityManager em = EMF.get().createEntityManager();
 		try{
-			em.getTransaction().begin();
-			em.persist(employee);
-			em.getTransaction().commit();//如果不commit，下面的查询看不到这条记录
+			if(add!=null){
+				em.getTransaction().begin();
+				if(add.equalsIgnoreCase("Employee")){
+					em.persist(employee);
+				}else{
+					em.persist(properties);
+				}
+				em.getTransaction().commit();//如果不commit，下面的查询看不到这条记录
+			}
 			//em.getTransaction().begin();
 			//em.persist(sub);
 			//em.getTransaction().commit();//如果不commit，下面的查询看不到这条记录
@@ -79,7 +89,7 @@ public class JPA extends HttpServlet {
 				}
 			}
 			
-			em.getTransaction().begin();
+/*			em.getTransaction().begin();
 			em.persist(sub1);
 			em.getTransaction().commit();
 			Subscribe sub2=em.find(Subscribe.class,sub1.getKey());
@@ -88,7 +98,7 @@ public class JPA extends HttpServlet {
 			sub2.setLink("http://www.ifanr.com/feed");
 			sub2.setUid("2");
 			em.getTransaction().commit();
-			
+			*/
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
