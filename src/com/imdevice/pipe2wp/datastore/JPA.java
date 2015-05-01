@@ -52,10 +52,10 @@ public class JPA extends HttpServlet {
 		try{
 			if(add!=null){
 				em.getTransaction().begin();
-				if(add.equalsIgnoreCase("Employee")){
-					em.persist(employee);
-				}else{
+				if(add.equalsIgnoreCase("XmlRPCProperties")){
 					em.persist(properties);
+				}else{
+					em.persist(employee);
 				}
 				em.getTransaction().commit();//如果不commit，下面的查询看不到这条记录
 			}
@@ -75,6 +75,18 @@ public class JPA extends HttpServlet {
 			}else{
 				o.print("No result!");
 			}
+			
+			TypedQuery<XmlRPCProperties> q2 = em.createQuery("SELECT e FROM XmlRPCProperties e",XmlRPCProperties.class);
+			List<XmlRPCProperties> props=q2.getResultList();
+			if(!props.isEmpty()){
+				for(XmlRPCProperties prop:props){	
+					o.print("<p>");
+					o.print(prop.getKey()+" : ");
+					o.print(prop);
+					o.print("</p>");
+				}
+			}
+			
 			TypedQuery<Subscribe> q1 = em.createQuery("SELECT e FROM Subscribe e",Subscribe.class);
 			List<Subscribe> subscribes=q1.getResultList();
 			if(!subscribes.isEmpty()){

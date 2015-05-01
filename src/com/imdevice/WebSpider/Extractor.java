@@ -18,7 +18,7 @@ public class Extractor {
 
     public static final String ATTR_CONTENT_SCORE = "contentScore";
     public static final String DOM_DEFAULT_CHARSET = "utf-8";
-    public static final String bonus="(^|\\s)(post|hentry|entry|article|content|single|main)[-_]?(content|single|text|body|box)?(\\s|$)";
+    public static final String bonus="(^|\\s)(post|page|hentry|entry|article|content|single|main)[-_]?(content|Cont|comView|single|text|body|box)?(\\s|$)";
     public static final String deduction="(?i)comment|meta|footer|footnote|subcontent|title";
     public static final String noise="(?i)[-_]?(googleAd|dig|jiathis|author|ignore|comment|reply|recommend|related|"
     		+ "meta|copyright|header|footer|footnote|sns|share|social|tag|nav|prenext|sidebar|krSide|widget-container|widget|"
@@ -132,6 +132,23 @@ public class Extractor {
     	Elements imgs=element.select("img[src]");
     	for(Element img:imgs){
     		img.attr("src", img.absUrl("src"));
+    	}
+    	if(doc.baseUri().contains("tmtpost.com")){
+    		Elements plast=element.select("div[istop=top] > p:last-child");
+    		plast.remove();
+    	}
+    	if(doc.baseUri().contains("huxiu.com")){
+    		element.select("div.font-wrap").remove();
+    	}
+    	if(doc.baseUri().contains("mydrivers.com")){
+    		element.select("p.jcuo1~*").remove();//找到所有p.jcuo1之后的元素，并删除
+    		//Elements needRemove=element.select("p.jcuo1~*");
+    		element.select("p.jcuo1").remove();
+    		//element.select("div.weixin").remove();
+    	}
+    	if(doc.baseUri().contains("leiphone.com")){
+    		Elements tops=element.select("div[istop=top]");
+    		if(!tops.isEmpty())element=tops.first();
     	}
     	if(doc.baseUri().contains("songshuhui.net")){
     		for(Element img:imgs){
@@ -527,7 +544,10 @@ public class Extractor {
 		//url="http://www.huxiu.com/article/6588/1.html";
 		//url="http://www.jpbeta.net/2012/12/ique-3ds-xl-1-2012-1201/";
 		//url="http://www.cnbeta.com/articles/216970.htm";
-		url="http://www.pintu360.com/25396.html";
+		//url="http://www.pintu360.com/25396.html";
+		//url="http://www.leiphone.com/news/201503/EYRGzrZ7mbgQkHA3.html";
+		//url="http://news.mydrivers.com/1/420/420247.htm";
+		url="http://www.tmtpost.com/227301.html";
 		//url="http://digi.tech.qq.com/a/20121207/000491.htm";
 		//url="http://www.chinaaet.com/article/index.aspx?id=24135";
 		//url="http://songshuhui.net/archives/82946";

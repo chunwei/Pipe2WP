@@ -10,8 +10,11 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -32,7 +35,7 @@ public class XmlRPCHandler {
 	
 	
 	public XmlRPCHandler(){
-		XmlRPCProperties prop=XmlRPCProperties.getInstance();
+		XmlRPCProperties prop=getProperties();
 		//xmlrpcurl="http://imdevice.com/wordpress/xmlrpc.php";
 		//xmlrpcurl="http://42.121.1.72/xmlrpc.php";
 		xmlrpcurl=prop.getXmlrpcurl();
@@ -41,6 +44,17 @@ public class XmlRPCHandler {
 		password=prop.getPassword();
 		methodname=prop.getMethodname();
 	}
+	public XmlRPCProperties getProperties() {
+		EntityManager em = EMF.get().createEntityManager();
+		TypedQuery<XmlRPCProperties> q = em.createQuery("SELECT e FROM XmlRPCProperties e",XmlRPCProperties.class);
+		List<XmlRPCProperties> props=q.getResultList();
+		if(!props.isEmpty()){
+			return props.get(0);
+		}
+		em.close();
+		return new XmlRPCProperties();
+	}
+	
 	public static void main(String[] args) {
 		
 		testcallRpc();

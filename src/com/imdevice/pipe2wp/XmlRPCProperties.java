@@ -1,17 +1,11 @@
 package com.imdevice.pipe2wp;
 
-import java.util.Date;
-import java.util.List;
-
 import javax.persistence.Entity;
-import javax.persistence.EntityManager;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.TypedQuery;
 
 import com.google.appengine.api.datastore.Key;
-import com.imdevice.pipe2wp.datastore.Employee;
 
 /**
  * @author luchunwei
@@ -77,16 +71,8 @@ public class XmlRPCProperties {
 	public void setMethodname(String methodname) {
 		this.methodname = methodname;
 	}
-	public static XmlRPCProperties getInstance() {
-		EntityManager em = EMF.get().createEntityManager();
-		TypedQuery<XmlRPCProperties> q = em.createQuery("SELECT e FROM XmlRPCProperties e",XmlRPCProperties.class);
-		List<XmlRPCProperties> props=q.getResultList();
-		if(!props.isEmpty()){
-			return props.get(0);
-		}
-		em.close();
-		return new XmlRPCProperties();
+	@Override
+	public String toString(){
+		return xmlrpcurl+" -  "+methodname;
 	}
-
-
 }
