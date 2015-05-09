@@ -5,8 +5,7 @@ import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
 public class RegexTest {
-
-	/**
+		/**
 	 * @param args
 	 */
 	public static void main(String[] args) {

@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.regex.Pattern;
 
 import org.jsoup.Jsoup;
@@ -35,6 +37,7 @@ public class Extractor {
     public boolean debug=false;
 	private boolean ignoreSporadic=false;
 	private String first_image_url="";
+	private String preFirstImage;
     public boolean isIgnoreSporadic() {
 		return ignoreSporadic;
 	}
@@ -114,7 +117,7 @@ public class Extractor {
     	//html=html.replaceAll(a2a, "");
     	String a2a="((<(li|p|span)\\s*[^>]*>)?\\s*(<a\\s*[^>]*>[^<]*</a>)\\s*(</(li|p|span)>)?\\s*){2,}";
     	Pattern a2aReg=Pattern.compile(a2a, Pattern.CASE_INSENSITIVE);
-    	a2aReg.matcher(html).replaceAll("");
+    	html=a2aReg.matcher(html).replaceAll("");
     	element.html(html);
         if(!debug){
 			Elements es=element.getElementsMatchingText("转载请注明|本文链接地址");
@@ -124,18 +127,31 @@ public class Extractor {
         }
         return element;
     }
+    private boolean isInTopScoreWhiteList(String url){
+    	String[] list={"leiphone.com","csdn.net",
+    			"evolife.cn",
+    			"tmtpost.com"};
+    	for(String w: list){
+    		if(url.indexOf(w)>-1)
+    		return true;    		
+    	}
+    	return false;
+    }
+    /**
+     * 此过滤针对已提取得到的Content Block进一步清理
+     * @param element --已经过getContentBox(getTopBox(doc))
+     * @return String clearContent
+     */
     private String clean(Element element){
     	if(null==element) return "";
-    	//此过滤针对已提取的Content Block
 
+    	//与预留部分合并
+    	element.prepend(preFirstImage);
+    	
     	//change relative URL to absolute URL
     	Elements imgs=element.select("img[src]");
     	for(Element img:imgs){
     		img.attr("src", img.absUrl("src"));
-    	}
-    	if(doc.baseUri().contains("tmtpost.com")){
-    		Elements plast=element.select("div[istop=top] > p:last-child");
-    		plast.remove();
     	}
     	if(doc.baseUri().contains("huxiu.com")){
     		element.select("div.font-wrap").remove();
@@ -146,9 +162,19 @@ public class Extractor {
     		element.select("p.jcuo1").remove();
     		//element.select("div.weixin").remove();
     	}
-    	if(doc.baseUri().contains("leiphone.com")){
+    	if(isInTopScoreWhiteList(doc.baseUri())){
     		Elements tops=element.select("div[istop=top]");
     		if(!tops.isEmpty())element=tops.first();
+    	}
+    	if(doc.baseUri().contains("tmtpost.com")){
+    		Element top=element.select("div[istop=top]").first();
+    		if(top!=null){
+    			Element lastP=top.select("p").last();
+    			if(lastP!=null)lastP.remove();
+    		}
+
+    		//Elements plast=element.select("div[istop=top]>p:last-child");
+    		//if(!plast.isEmpty())plast.remove();
     	}
     	if(doc.baseUri().contains("songshuhui.net")){
     		for(Element img:imgs){
@@ -195,7 +221,8 @@ public class Extractor {
 	        }
         
         	element.select("*").removeAttr("class");       	
-        }
+        }    	 	
+    	
     	contentElement=element;
         return element.html()==null?"":element.html();
     }
@@ -251,6 +278,7 @@ public class Extractor {
     }
     public Element getTopBox(Document doc){
     	findTitle();
+    	preFirstImage=preGetFirstImage();
     	Element body=preClean(doc.body());
     	Elements articles=body.getElementsByTag("<article>");
     	if(!articles.isEmpty())body=articles.first();
@@ -300,7 +328,18 @@ public class Extractor {
     	}
     	return topBox;
     }
-    public Element getContentBox(Element topBox){
+    private String preGetFirstImage() {
+    	Elements bodys=doc.select("div.post-body");
+    	if(!bodys.isEmpty()){
+    		Element body=bodys.first();
+    		Elements imgs=body.select("img[src]");
+    		if(!imgs.isEmpty()){
+    			return "<img src='"+imgs.first().attr("src")+"' />";
+    		}
+    	}
+    	return "";
+	}
+	public Element getContentBox(Element topBox){
     	if(ignoreSporadic)return topBox;
     	//如果有match到的段落在topBox之外的，往上追溯2层，如在此2层之内则取该层为topBox=
     	Element contentBox=topBox;
@@ -333,13 +372,17 @@ public class Extractor {
     	if(debug)contentBox.addClass("top-2-parent");
     	return contentBox;
     }
+    
     public void findTitle(){
     	Elements hs=doc.body().select("h1,h2,h3,h4,h5");
+    	Collections.sort(hs,new SortByTagName());
     	boolean found=false;
     	for(Element h:hs){
     		for(Element c:h.getAllElements()){
-    			if(title.indexOf(c.text().trim())>-1){
-    				title=c.text().trim();found=true;
+    			String ctext=c.text().trim();
+    			if(ctext!=null&&ctext.length()>0&&title.indexOf(ctext)>-1){
+    				title=ctext;
+    				found=true;
     				break;
     			}    				
     		}
@@ -547,12 +590,15 @@ public class Extractor {
 		//url="http://www.pintu360.com/25396.html";
 		//url="http://www.leiphone.com/news/201503/EYRGzrZ7mbgQkHA3.html";
 		//url="http://news.mydrivers.com/1/420/420247.htm";
-		url="http://www.tmtpost.com/227301.html";
+		//url="http://www.tmtpost.com/233001.html";		
 		//url="http://digi.tech.qq.com/a/20121207/000491.htm";
 		//url="http://www.chinaaet.com/article/index.aspx?id=24135";
 		//url="http://songshuhui.net/archives/82946";
 		//url="http://www.36kr.com/p/204969.html";
 		//url="http://www.huxiu.com/article/17841/1.html";
+		//url="http://www.evolife.cn/html/2015/82533.html";
+		//url="http://www.csdn.net/article/2015-05-08/2824648-micro-community";
+		url="http://cn.engadget.com/2015/05/08/gtav-video-editor-ps4-xbox-one/";
 		URL u;
 		try {
 			u = new URL(url);
@@ -573,3 +619,8 @@ public class Extractor {
 	}
 
 }
+class SortByTagName implements Comparator<Element> {
+	 public int compare(Element o1, Element o2) {
+	  return o1.tagName().compareTo(o2.tagName());
+	 }
+	}

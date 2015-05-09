@@ -12,7 +12,9 @@
 	</system-properties>
 	<sessions-enabled>true</sessions-enabled>
 	<static-files>
+  	<include path="/tinymce/**" />
+  	<include path="/**.html" /> 
         <include path="/favicon.ico" />
-        <include path="/style.css" />
+        <include path="/**.css" />
     </static-files>
 </appengine-web-app>
